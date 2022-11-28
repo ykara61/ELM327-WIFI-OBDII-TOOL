@@ -1,0 +1,1162 @@
+[
+ {
+  "PID_DECIMAL": 0,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [01 - 20]",
+  "Formula": "Bit encoded [A7..D0] == [PID $01..PID $20]"
+ },
+ {
+  "PID_DECIMAL": 1,
+  "Data_bytes_returned": 4,
+  "Description": "Monitor status since DTCs cleared.",
+  "Formula": "Bit encoded."
+ },
+ {
+  "PID_DECIMAL": 2,
+  "Data_bytes_returned": 2,
+  "Description": "Freeze DTC"
+ },
+ {
+  "PID_DECIMAL": 3,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel system status",
+  "Formula": "Bit encoded"
+ },
+ {
+  "PID_DECIMAL": 4,
+  "Data_bytes_returned": 1,
+  "Description": "Calculated engine load",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%",
+  "Formula": "(or )"
+ },
+ {
+  "PID_DECIMAL": 5,
+  "Data_bytes_returned": 1,
+  "Description": "Engine coolant temperature",
+  "Min value": -40,
+  "Max value": 215,
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 6,
+  "Data_bytes_returned": 1,
+  "Description": "Short term fuel trim—Bank 1",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%",
+  "Formula": "(or  )"
+ },
+ {
+  "PID_DECIMAL": 7,
+  "Data_bytes_returned": 1,
+  "Description": "Long term fuel trim—Bank 1",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%",
+  "Formula": "(or  )"
+ },
+ {
+  "PID_DECIMAL": 8,
+  "Data_bytes_returned": 1,
+  "Description": "Short term fuel trim—Bank 2",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%",
+  "Formula": "(or  )"
+ },
+ {
+  "PID_DECIMAL": 9,
+  "Data_bytes_returned": 1,
+  "Description": "Long term fuel trim—Bank 2",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%",
+  "Formula": "(or  )"
+ },
+ {
+  "PID_DECIMAL": 10,
+  "Data_bytes_returned": 1,
+  "Description": "Fuel pressure",
+  "Min value": 0,
+  "Max value": 765,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 11,
+  "Data_bytes_returned": 1,
+  "Description": "Intake manifold absolute pressure",
+  "Min value": 0,
+  "Max value": 255,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 12,
+  "Data_bytes_returned": 2,
+  "Description": "Engine speed",
+  "Min value": 0,
+  "Max value": "16,383.75",
+  "Units": "rpm"
+ },
+ {
+  "PID_DECIMAL": 13,
+  "Data_bytes_returned": 1,
+  "Description": "Vehicle speed",
+  "Min value": 0,
+  "Max value": 255,
+  "Units": "km\/h"
+ },
+ {
+  "PID_DECIMAL": 14,
+  "Data_bytes_returned": 1,
+  "Description": "Timing advance",
+  "Min value": -64,
+  "Max value": "63.5",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 15,
+  "Data_bytes_returned": 1,
+  "Description": "Intake air temperature",
+  "Min value": -40,
+  "Max value": 215,
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 16,
+  "Data_bytes_returned": 2,
+  "Description": "Mass air flow sensor (MAF) air flow rate",
+  "Min value": 0,
+  "Max value": "655.35",
+  "Units": "g\/s"
+ },
+ {
+  "PID_DECIMAL": 17,
+  "Data_bytes_returned": 1,
+  "Description": "Throttle position",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 18,
+  "Data_bytes_returned": 1,
+  "Description": "Commanded secondary air status",
+  "Formula": "Bit encoded"
+ },
+ {
+  "PID_DECIMAL": 19,
+  "Data_bytes_returned": 1,
+  "Description": "Oxygen sensors present",
+  "Formula": "[A0..A3] == Bank 1, Sensors 1-4. [A4..A7] == Bank 2..."
+ },
+ {
+  "PID_DECIMAL": 20,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 1\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 21,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 2\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 22,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 3\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 23,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 4\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 24,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 5\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 25,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 6\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 26,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 7\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 27,
+  "Data_bytes_returned": 2,
+  "Description": "Oxygen Sensor 8\nA: Voltage\nB: Short term fuel trim",
+  "Min value": "0\n-100",
+  "Max value": "1.275\n99.2",
+  "Units": "V%",
+  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
+ },
+ {
+  "PID_DECIMAL": 28,
+  "Data_bytes_returned": 1,
+  "Description": "OBD standards this vehicle conforms to",
+  "Min value": 1,
+  "Max value": 250,
+  "Units": "-",
+  "Formula": "enumerated"
+ },
+ {
+  "PID_DECIMAL": 29,
+  "Data_bytes_returned": 1,
+  "Description": "Oxygen sensors present",
+  "Formula": "Similar to PID 13, but [A0..A7] == [B1S1, B1S2, B2S1, B2S2, B3S1, B3S2, B4S1, B4S2]"
+ },
+ {
+  "PID_DECIMAL": 30,
+  "Data_bytes_returned": 1,
+  "Description": "Auxiliary input status",
+  "Formula": "A0 == Power Take Off (PTO) status (1 == active)\n[A1..A7] not used"
+ },
+ {
+  "PID_DECIMAL": 31,
+  "Data_bytes_returned": 2,
+  "Description": "Run time since engine start",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "s"
+ },
+ {
+  "PID_DECIMAL": 32,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [21 - 40]",
+  "Formula": "Bit encoded [A7..D0] == [PID $21..PID $40]"
+ },
+ {
+  "PID_DECIMAL": 33,
+  "Data_bytes_returned": 2,
+  "Description": "Distance traveled with malfunction indicator lamp (MIL) on",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "km"
+ },
+ {
+  "PID_DECIMAL": 34,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel Rail Pressure (relative to manifold vacuum)",
+  "Min value": 0,
+  "Max value": 5177265,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 35,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel Rail Gauge Pressure",
+  "Min value": 0,
+  "Max value": 655.35,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 36,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 1\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Min value": "\n",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 37,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 2\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 38,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 3\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 39,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 4\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 40,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 5\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 41,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 6\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 42,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 7\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 43,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 8\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
+  "Units": "ratio\nV"
+ },
+ {
+  "PID_DECIMAL": 44,
+  "Data_bytes_returned": 1,
+  "Description": "Commanded Exhaust gas recirculation",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 45,
+  "Data_bytes_returned": 1,
+  "Description": "Exhaust gas recirculation Error",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 46,
+  "Data_bytes_returned": 1,
+  "Description": "Commanded evaporative purge",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 47,
+  "Data_bytes_returned": 1,
+  "Description": "Fuel Tank Level Input",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 48,
+  "Data_bytes_returned": 1,
+  "Description": "Warm-ups since codes cleared",
+  "Min value": 0,
+  "Max value": 255,
+  "Units": "count"
+ },
+ {
+  "PID_DECIMAL": 49,
+  "Data_bytes_returned": 2,
+  "Description": "Distance traveled since codes cleared",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "km"
+ },
+ {
+  "PID_DECIMAL": 50,
+  "Data_bytes_returned": 2,
+  "Description": "Evap. System Vapor Pressure",
+  "Min value": -8.192,
+  "Max value": "8191.75",
+  "Units": "Pa",
+  "Formula": "(AB is two's complement signed)"
+ },
+ {
+  "PID_DECIMAL": 51,
+  "Data_bytes_returned": 1,
+  "Description": "Absolute Barometric Pressure",
+  "Min value": 0,
+  "Max value": 255,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 52,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 1\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 53,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 2\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 54,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 3\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 55,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 4\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 56,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 5\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 57,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 6\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 58,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 7\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 59,
+  "Data_bytes_returned": 4,
+  "Description": "Oxygen Sensor 8\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
+  "Units": "ratio\nmA"
+ },
+ {
+  "PID_DECIMAL": 60,
+  "Data_bytes_returned": 2,
+  "Description": "Catalyst Temperature: Bank 1, Sensor 1",
+  "Min value": -40,
+  "Max value": "6,513.5",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 61,
+  "Data_bytes_returned": 2,
+  "Description": "Catalyst Temperature: Bank 2, Sensor 1",
+  "Min value": -40,
+  "Max value": "6,513.5",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 62,
+  "Data_bytes_returned": 2,
+  "Description": "Catalyst Temperature: Bank 1, Sensor 2",
+  "Min value": -40,
+  "Max value": "6,513.5",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 63,
+  "Data_bytes_returned": 2,
+  "Description": "Catalyst Temperature: Bank 2, Sensor 2",
+  "Min value": -40,
+  "Max value": "6,513.5",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 64,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [41 - 60]",
+  "Formula": "Bit encoded [A7..D0] == [PID $41..PID $60]"
+ },
+ {
+  "PID_DECIMAL": 65,
+  "Data_bytes_returned": 4,
+  "Description": "Monitor status this drive cycle",
+  "Formula": "Bit encoded"
+ },
+ {
+  "PID_DECIMAL": 66,
+  "Data_bytes_returned": 2,
+  "Description": "Control module voltage",
+  "Min value": 0,
+  "Max value": 65535,
+  "Units": "V"
+ },
+ {
+  "PID_DECIMAL": 67,
+  "Data_bytes_returned": 2,
+  "Description": "Absolute load value",
+  "Min value": 0,
+  "Max value": 25.7,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 68,
+  "Data_bytes_returned": 2,
+  "Description": "Commanded Air-Fuel Equivalence Ratio (lambda,λ)",
+  "Units": "ratio"
+ },
+ {
+  "PID_DECIMAL": 69,
+  "Data_bytes_returned": 1,
+  "Description": "Relative throttle position",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 70,
+  "Data_bytes_returned": 1,
+  "Description": "Ambient air temperature",
+  "Min value": -40,
+  "Max value": 215,
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 71,
+  "Data_bytes_returned": 1,
+  "Description": "Absolute throttle position B",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 72,
+  "Data_bytes_returned": 1,
+  "Description": "Absolute throttle position C",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 73,
+  "Data_bytes_returned": 1,
+  "Description": "Accelerator pedal position D",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 74,
+  "Data_bytes_returned": 1,
+  "Description": "Accelerator pedal position E",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 75,
+  "Data_bytes_returned": 1,
+  "Description": "Accelerator pedal position F",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 76,
+  "Data_bytes_returned": 1,
+  "Description": "Commanded throttle actuator",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 77,
+  "Data_bytes_returned": 2,
+  "Description": "Time run with MIL on",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "min"
+ },
+ {
+  "PID_DECIMAL": 78,
+  "Data_bytes_returned": 2,
+  "Description": "Time since trouble codes cleared",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "min"
+ },
+ {
+  "PID_DECIMAL": 79,
+  "Data_bytes_returned": 4,
+  "Description": "Maximum value for Fuel–Air equivalence ratio, oxygen sensor voltage, oxygen sensor current, and intake manifold absolute pressure",
+  "Min value": "0, 0, 0, 0",
+  "Max value": "255, 255, 255, 2550",
+  "Units": "ratio, V, mA, kPa",
+  "Formula": ", , ,"
+ },
+ {
+  "PID_DECIMAL": 80,
+  "Data_bytes_returned": 4,
+  "Description": "Maximum value for air flow rate from mass air flow sensor",
+  "Min value": 0,
+  "Max value": 2550,
+  "Units": "g\/s",
+  "Formula": "; , , and  are reserved for future use"
+ },
+ {
+  "PID_DECIMAL": 81,
+  "Data_bytes_returned": 1,
+  "Description": "Fuel Type",
+  "Formula": "From fuel type table"
+ },
+ {
+  "PID_DECIMAL": 82,
+  "Data_bytes_returned": 1,
+  "Description": "Ethanol fuel %",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 83,
+  "Data_bytes_returned": 2,
+  "Description": "Absolute Evap system Vapor Pressure",
+  "Min value": 0,
+  "Max value": 327675,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 84,
+  "Data_bytes_returned": 2,
+  "Description": "Evap system vapor pressure",
+  "Min value": -32.768,
+  "Max value": 32.767,
+  "Units": "Pa",
+  "Formula": "(AB is two's complement signed)"
+ },
+ {
+  "PID_DECIMAL": 85,
+  "Data_bytes_returned": 2,
+  "Description": "Short term secondary oxygen sensor trim, A: bank 1, B: bank 3",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 86,
+  "Data_bytes_returned": 2,
+  "Description": "Long term secondary oxygen sensor trim, A: bank 1, B: bank 3",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 87,
+  "Data_bytes_returned": 2,
+  "Description": "Short term secondary oxygen sensor trim, A: bank 2, B: bank 4",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 88,
+  "Data_bytes_returned": 2,
+  "Description": "Long term secondary oxygen sensor trim, A: bank 2, B: bank 4",
+  "Min value": -100,
+  "Max value": "99.2",
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 89,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel rail absolute pressure",
+  "Min value": 0,
+  "Max value": 655.35,
+  "Units": "kPa"
+ },
+ {
+  "PID_DECIMAL": 90,
+  "Data_bytes_returned": 1,
+  "Description": "Relative accelerator pedal position",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 91,
+  "Data_bytes_returned": 1,
+  "Description": "Hybrid battery pack remaining life",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 92,
+  "Data_bytes_returned": 1,
+  "Description": "Engine oil temperature",
+  "Min value": -40,
+  "Max value": 210,
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 93,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel injection timing",
+  "Min value": "-210.00",
+  "Max value": 301992,
+  "Units": "°"
+ },
+ {
+  "PID_DECIMAL": 94,
+  "Data_bytes_returned": 2,
+  "Description": "Engine fuel rate",
+  "Min value": 0,
+  "Max value": "3212.75",
+  "Units": "L\/h"
+ },
+ {
+  "PID_DECIMAL": 95,
+  "Data_bytes_returned": 1,
+  "Description": "Emission requirements to which vehicle is designed",
+  "Formula": "Bit Encoded"
+ },
+ {
+  "PID_DECIMAL": 96,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [61 - 80]",
+  "Formula": "Bit encoded [A7..D0] == [PID $61..PID $80]"
+ },
+ {
+  "PID_DECIMAL": 97,
+  "Data_bytes_returned": 1,
+  "Description": "Driver's demand engine - percent torque",
+  "Min value": -125,
+  "Max value": 130,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 98,
+  "Data_bytes_returned": 1,
+  "Description": "Actual engine - percent torque",
+  "Min value": -125,
+  "Max value": 130,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 99,
+  "Data_bytes_returned": 2,
+  "Description": "Engine reference torque",
+  "Min value": 0,
+  "Max value": 65.535,
+  "Units": "N⋅m"
+ },
+ {
+  "PID_DECIMAL": 100,
+  "Data_bytes_returned": 5,
+  "Description": "Engine percent torque data",
+  "Min value": -125,
+  "Max value": 130,
+  "Units": "%",
+  "Formula": "Idle\n Engine point 1\n Engine point 2\n Engine point 3\n Engine point 4"
+ },
+ {
+  "PID_DECIMAL": 101,
+  "Data_bytes_returned": 2,
+  "Description": "Auxiliary input \/ output supported",
+  "Formula": "Bit Encoded"
+ },
+ {
+  "PID_DECIMAL": 102,
+  "Data_bytes_returned": 5,
+  "Description": "Mass air flow sensor",
+  "Min value": 0,
+  "Max value": 204796875,
+  "Units": "g\/s",
+  "Formula": "[A0]== Sensor A Supported\n[A1]== Sensor B Supported\nSensor A:\nSensor B:"
+ },
+ {
+  "PID_DECIMAL": 103,
+  "Data_bytes_returned": 3,
+  "Description": "Engine coolant temperature",
+  "Min value": -40,
+  "Max value": 215,
+  "Units": "celsius",
+  "Formula": "[A0]== Sensor 1 Supported\n[A1]== Sensor 2 Supported\nSensor 1:\nSensor 2:"
+ },
+ {
+  "PID_DECIMAL": 104,
+  "Data_bytes_returned": 3,
+  "Description": "Intake air temperature sensor",
+  "Min value": -40,
+  "Max value": 215,
+  "Units": "celsius",
+  "Formula": "[A0]== Sensor 1 Supported\n[A1]== Sensor 2 Supported\nSensor 1:\nSensor 2:"
+ },
+ {
+  "PID_DECIMAL": 105,
+  "Data_bytes_returned": 7,
+  "Description": "Actual EGR, Commanded EGR, and EGR Error"
+ },
+ {
+  "PID_DECIMAL": 106,
+  "Data_bytes_returned": 5,
+  "Description": "Commanded Diesel intake air flow control and relative intake air flow position"
+ },
+ {
+  "PID_DECIMAL": 107,
+  "Data_bytes_returned": 5,
+  "Description": "Exhaust gas recirculation temperature"
+ },
+ {
+  "PID_DECIMAL": 108,
+  "Data_bytes_returned": 5,
+  "Description": "Commanded throttle actuator control and relative throttle position"
+ },
+ {
+  "PID_DECIMAL": 109,
+  "Data_bytes_returned": 11,
+  "Description": "Fuel pressure control system"
+ },
+ {
+  "PID_DECIMAL": 110,
+  "Data_bytes_returned": 9,
+  "Description": "Injection pressure control system"
+ },
+ {
+  "PID_DECIMAL": 111,
+  "Data_bytes_returned": 3,
+  "Description": "Turbocharger compressor inlet pressure"
+ },
+ {
+  "PID_DECIMAL": 112,
+  "Data_bytes_returned": 10,
+  "Description": "Boost pressure control"
+ },
+ {
+  "PID_DECIMAL": 113,
+  "Data_bytes_returned": 6,
+  "Description": "Variable Geometry turbo (VGT) control"
+ },
+ {
+  "PID_DECIMAL": 114,
+  "Data_bytes_returned": 5,
+  "Description": "Wastegate control"
+ },
+ {
+  "PID_DECIMAL": 115,
+  "Data_bytes_returned": 5,
+  "Description": "Exhaust pressure"
+ },
+ {
+  "PID_DECIMAL": 116,
+  "Data_bytes_returned": 5,
+  "Description": "Turbocharger RPM"
+ },
+ {
+  "PID_DECIMAL": 117,
+  "Data_bytes_returned": 7,
+  "Description": "Turbocharger temperature"
+ },
+ {
+  "PID_DECIMAL": 118,
+  "Data_bytes_returned": 7,
+  "Description": "Turbocharger temperature"
+ },
+ {
+  "PID_DECIMAL": 119,
+  "Data_bytes_returned": 5,
+  "Description": "Charge air cooler temperature (CACT)"
+ },
+ {
+  "PID_DECIMAL": 120,
+  "Data_bytes_returned": 9,
+  "Description": "Exhaust Gas temperature (EGT) Bank 1",
+  "Formula": "Special PID"
+ },
+ {
+  "PID_DECIMAL": 121,
+  "Data_bytes_returned": 9,
+  "Description": "Exhaust Gas temperature (EGT) Bank 2",
+  "Formula": "Special PID"
+ },
+ {
+  "PID_DECIMAL": 122,
+  "Data_bytes_returned": 7,
+  "Description": "Diesel particulate filter (DPF)differential pressure"
+ },
+ {
+  "PID_DECIMAL": 123,
+  "Data_bytes_returned": 7,
+  "Description": "Diesel particulate filter (DPF)"
+ },
+ {
+  "PID_DECIMAL": 124,
+  "Data_bytes_returned": 9,
+  "Description": "Diesel Particulate filter (DPF) temperature",
+  "Units": "celsius"
+ },
+ {
+  "PID_DECIMAL": 125,
+  "Data_bytes_returned": 1,
+  "Description": "NOx NTE (Not-To-Exceed) control area status"
+ },
+ {
+  "PID_DECIMAL": 126,
+  "Data_bytes_returned": 1,
+  "Description": "PM NTE (Not-To-Exceed) control area status"
+ },
+ {
+  "PID_DECIMAL": 127,
+  "Data_bytes_returned": 13,
+  "Description": "Engine run time [b]",
+  "Units": "s"
+ },
+ {
+  "PID_DECIMAL": 128,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [81 - A0]",
+  "Formula": "Bit encoded [A7..D0] == [PID $81..PID $A0]"
+ },
+ {
+  "PID_DECIMAL": 129,
+  "Data_bytes_returned": 41,
+  "Description": "Engine run time for Auxiliary Emissions Control Device(AECD)"
+ },
+ {
+  "PID_DECIMAL": 130,
+  "Data_bytes_returned": 41,
+  "Description": "Engine run time for Auxiliary Emissions Control Device(AECD)"
+ },
+ {
+  "PID_DECIMAL": 131,
+  "Data_bytes_returned": 9,
+  "Description": "NOx sensor"
+ },
+ {
+  "PID_DECIMAL": 132,
+  "Data_bytes_returned": 1,
+  "Description": "Manifold surface temperature"
+ },
+ {
+  "PID_DECIMAL": 133,
+  "Data_bytes_returned": 10,
+  "Description": "NOx reagent system"
+ },
+ {
+  "PID_DECIMAL": 134,
+  "Data_bytes_returned": 5,
+  "Description": "Particulate matter (PM) sensor"
+ },
+ {
+  "PID_DECIMAL": 135,
+  "Data_bytes_returned": 5,
+  "Description": "Intake manifold absolute pressure"
+ },
+ {
+  "PID_DECIMAL": 136,
+  "Data_bytes_returned": 13,
+  "Description": "SCR Induce System"
+ },
+ {
+  "PID_DECIMAL": 137,
+  "Data_bytes_returned": 41,
+  "Description": "Run Time for AECD #11-#15"
+ },
+ {
+  "PID_DECIMAL": 138,
+  "Data_bytes_returned": 41,
+  "Description": "Run Time for AECD #16-#20"
+ },
+ {
+  "PID_DECIMAL": 139,
+  "Data_bytes_returned": 7,
+  "Description": "Diesel Aftertreatment"
+ },
+ {
+  "PID_DECIMAL": 140,
+  "Data_bytes_returned": 17,
+  "Description": "O2 Sensor (Wide Range)"
+ },
+ {
+  "PID_DECIMAL": 141,
+  "Data_bytes_returned": 1,
+  "Description": "Throttle Position G",
+  "Min value": 0,
+  "Max value": 100,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 142,
+  "Data_bytes_returned": 1,
+  "Description": "Engine Friction - Percent Torque",
+  "Min value": -125,
+  "Max value": 130,
+  "Units": "%"
+ },
+ {
+  "PID_DECIMAL": 143,
+  "Data_bytes_returned": 7,
+  "Description": "PM Sensor Bank 1 & 2"
+ },
+ {
+  "PID_DECIMAL": 144,
+  "Data_bytes_returned": 3,
+  "Description": "WWH-OBD Vehicle OBD System Information",
+  "Units": "h"
+ },
+ {
+  "PID_DECIMAL": 145,
+  "Data_bytes_returned": 5,
+  "Description": "WWH-OBD Vehicle OBD System Information",
+  "Units": "h"
+ },
+ {
+  "PID_DECIMAL": 146,
+  "Data_bytes_returned": 2,
+  "Description": "Fuel System Control"
+ },
+ {
+  "PID_DECIMAL": 147,
+  "Data_bytes_returned": 3,
+  "Description": "WWH-OBD Vehicle OBD Counters support",
+  "Units": "h"
+ },
+ {
+  "PID_DECIMAL": 148,
+  "Data_bytes_returned": 12,
+  "Description": "NOx Warning And Inducement System"
+ },
+ {
+  "PID_DECIMAL": 152,
+  "Data_bytes_returned": 9,
+  "Description": "Exhaust Gas Temperature Sensor"
+ },
+ {
+  "PID_DECIMAL": 153,
+  "Data_bytes_returned": 9,
+  "Description": "Exhaust Gas Temperature Sensor"
+ },
+ {
+  "PID_DECIMAL": 154,
+  "Data_bytes_returned": 6,
+  "Description": "Hybrid\/EV Vehicle System Data, Battery, Voltage"
+ },
+ {
+  "PID_DECIMAL": 155,
+  "Data_bytes_returned": 4,
+  "Description": "Diesel Exhaust Fluid Sensor Data"
+ },
+ {
+  "PID_DECIMAL": 156,
+  "Data_bytes_returned": 17,
+  "Description": "O2 Sensor Data"
+ },
+ {
+  "PID_DECIMAL": 157,
+  "Data_bytes_returned": 4,
+  "Description": "Engine Fuel Rate",
+  "Units": "g\/s"
+ },
+ {
+  "PID_DECIMAL": 158,
+  "Data_bytes_returned": 2,
+  "Description": "Engine Exhaust Flow Rate",
+  "Units": "kg\/h"
+ },
+ {
+  "PID_DECIMAL": 159,
+  "Data_bytes_returned": 9,
+  "Description": "Fuel System Percentage Use"
+ },
+ {
+  "PID_DECIMAL": 160,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [A1 - C0]",
+  "Formula": "Bit encoded [A7..D0] == [PID $A1..PID $C0]"
+ },
+ {
+  "PID_DECIMAL": 161,
+  "Data_bytes_returned": 9,
+  "Description": "NOx Sensor Corrected Data",
+  "Units": "ppm"
+ },
+ {
+  "PID_DECIMAL": 162,
+  "Data_bytes_returned": 2,
+  "Description": "Cylinder Fuel Rate",
+  "Min value": 0,
+  "Max value": 204796875,
+  "Units": "mg\/stroke"
+ },
+ {
+  "PID_DECIMAL": 163,
+  "Data_bytes_returned": 9,
+  "Description": "Evap System Vapor Pressure",
+  "Units": "Pa"
+ },
+ {
+  "PID_DECIMAL": 164,
+  "Data_bytes_returned": 4,
+  "Description": "Transmission Actual Gear",
+  "Min value": 0,
+  "Max value": 65535,
+  "Units": "ratio",
+  "Formula": "[A1]==Supported"
+ },
+ {
+  "PID_DECIMAL": 165,
+  "Data_bytes_returned": 4,
+  "Description": "Commanded Diesel Exhaust Fluid Dosing",
+  "Min value": 0,
+  "Max value": "127.5",
+  "Units": "%",
+  "Formula": "[A0]= 1:Supported; 0:Unsupported"
+ },
+ {
+  "PID_DECIMAL": 166,
+  "Data_bytes_returned": 4,
+  "Description": "Odometer [c]",
+  "Min value": 0,
+  "Max value": "429,496,729.5",
+  "Units": "km"
+ },
+ {
+  "PID_DECIMAL": 167,
+  "Data_bytes_returned": 4,
+  "Description": "NOx Sensor Concentration Sensors 3 and 4"
+ },
+ {
+  "PID_DECIMAL": 168,
+  "Data_bytes_returned": 4,
+  "Description": "NOx Sensor Corrected Concentration Sensors 3 and 4"
+ },
+ {
+  "PID_DECIMAL": 169,
+  "Data_bytes_returned": 4,
+  "Description": "ABS Disable Switch State",
+  "Formula": "[A0]= 1:Supported; 0:Unsupported[B0]= 1:Yes;0:No"
+ },
+ {
+  "PID_DECIMAL": 192,
+  "Data_bytes_returned": 4,
+  "Description": "PIDs supported [C1 - E0]",
+  "Formula": "Bit encoded [A7..D0] == [PID $C1..PID $E0]"
+ },
+ {
+  "PID_DECIMAL": 195,
+  "Data_bytes_returned": "?",
+  "Description": "?",
+  "Formula": "Returns numerous data, including Drive Condition ID and Engine Speed"
+ },
+ {
+  "PID_DECIMAL": 196,
+  "Data_bytes_returned": "?",
+  "Description": "?",
+  "Formula": "B5 is Engine Idle Request\nB6 is Engine Stop Request"
+ }
+]

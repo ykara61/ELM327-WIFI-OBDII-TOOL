@@ -1,49 +1,33 @@
 ﻿using ELM327_PID_DataCollector.Helpers;
+using System.Reflection;
+using System.IO;
+using System.Reflection;
+using ELM327_PID_DataCollector.Items;
 
 namespace ELM327_PID_DataCollector
 {
     internal class Program
     {
-        static TcpClientOBD client;
+
         static void Main(string[] args)
         {
-            Console.WriteLine("ELM 327 WIFI DATA COLLECTOR STARTED");
-            Console.WriteLine(".....");
 
-            client = new TcpClientOBD("127.0.0.1", 35000);
-
-            client.PidMessageArrived += Client_PidMessageArrived;
-            client.OBDdeviceReady += Client_OBDdeviceReady;
-
-            client.StartOBDdev();
-
-            Console.ReadKey();
-        }
-
-        private static void Client_OBDdeviceReady()
-        {
-            client.SendSpeedRequest();
-        }
-
-        private static void Client_PidMessageArrived(string message)
-        {
-            if (message.Contains("41 0D"))
+            foreach (var i in Helpers.HelperTool.ReadJsonConfiguration(Helpers.HelperTool.ReadResource("PID_Values.json")))
             {
-                var xx = message.Split("41 0D ")[1];
-                var spd = (message.Split("41 0D ")[1].Substring(0, 2));
-
-                Console.WriteLine("SPEED : " + Convert.ToInt32(HelperTool.hex2bin(spd), 2));
+                Console.WriteLine(i.Description);
             }
-            else if (message.Contains("41 0C"))
+
+            Elm327wifi elmObd = new Elm327wifi("192.168.43.170",35000);
+
+            while (true)
             {
-                var xx = message.Split("41 0C ")[1];
-                var rpm = (message.Split("41 0C ")[1].Replace(" ", "").Substring(0, 4));
+                elmObd.Start();
 
+                Console.ReadKey();
 
-                Console.WriteLine("RPM : " + Convert.ToInt32(HelperTool.hex2bin(rpm), 2) / 4);
-
-                client.send("010C" + "\r");
+                elmObd.Stop();
             }
         }
+
     }
 }

@@ -17,12 +17,14 @@ namespace ELM327_PID_DataCollector
         //TcpClient client;
         NetworkStream stream;
         public bool connected = false;
+        private bool forceStop = false;
 
         public delegate void EventPIDholder(string message);
         public event EventPIDholder PidMessageArrived;
 
         public delegate void EventPID();
         public event EventPID OBDdeviceReady;
+        
 
         public TcpClientOBD(string _ip, int _port)
         {
@@ -33,7 +35,7 @@ namespace ELM327_PID_DataCollector
 
         public void StartOBDdev()
         {
-
+            forceStop = false;
             bool Tryconnect = true;
 
             Task.Run(() =>
@@ -44,15 +46,21 @@ namespace ELM327_PID_DataCollector
                     {
                         Connect(IPAddress.Parse(ip), port);
                         stream = GetStream();
+                        stream.ReadTimeout = 1000;
                         Tryconnect = false;
-                    }
-                    catch (Exception e)
+                    }catch (SocketException e)
+                    {
+                        Console.WriteLine("Connection is not Successfull. Retrying...");
+                    }catch(Exception e)
                     {
                         Console.WriteLine(e.Message);
                     }
                 }
 
                 Console.WriteLine("Connected");
+
+
+
                 connected = true;
 
                 Task.Delay(1000).Wait();
@@ -66,38 +74,57 @@ namespace ELM327_PID_DataCollector
                 string data = "";
                 int k = 0;
 
-                while (true)
+                while (!forceStop)
                 {
                     // Buffer to store the response bytes.
-                    byte[] buffer = new byte[ReceiveBufferSize];
-
-                    int bytesRead = stream.Read(buffer, 0,buffer.Length);
-
-                    byte[] mesajj = new byte[bytesRead];
-
-                    for (int i = 0; i < bytesRead; i++)
+                    try
                     {
-                        mesajj[i] = buffer[i];
-                    }
+                        byte[] buffer = new byte[ReceiveBufferSize];
 
-                    k++;
-                    data += Encoding.Default.GetString(mesajj, 0, bytesRead).Replace("\r"," ");
+                        int bytesRead = stream.Read(buffer, 0, buffer.Length);
 
-                    if (data.EndsWith('>') || data.Length> 128 || k> 10)
-                    {
-                        
-                        k = 0;
-                        if (data.Length > 128)
+                        byte[] mesajj = new byte[bytesRead];
+
+                        for (int i = 0; i < bytesRead; i++)
                         {
-                            send("\r");
+                            mesajj[i] = buffer[i];
                         }
 
-                        PidMessageArrived.Invoke(data);
+                        k++;
+                        data += Encoding.Default.GetString(mesajj, 0, bytesRead).Replace("\r", " ");
 
-                        data = "";
+                        if (data.EndsWith('>') || data.Length > 128 || k > 10)
+                        {
+
+                            k = 0;
+                            if (data.Length > 128)
+                            {
+                                send("\r");
+                            }
+
+                            PidMessageArrived.Invoke(data);
+
+                            data = "";
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                        //Console.WriteLine(e.Message);
+                        //Console.WriteLine("Connection Lost! Trying Connect Again");
+                        //forceStop= true;
+                        //StartOBDdev();
                     }
                 }
             });
+        }
+
+
+        void CheckObdConnection()
+        {
+            
+
+
         }
 
         void SetElm327Configs()
@@ -137,6 +164,11 @@ namespace ELM327_PID_DataCollector
             send("010C" + "\r");
         }
 
+        public void SendRequest(string id,string mode)
+        {
+            send(mode+id + "\r");
+        }
+
         public void send(byte[] msg)
         {
             if (stream == null)
@@ -144,8 +176,14 @@ namespace ELM327_PID_DataCollector
                 Console.WriteLine("No stream yet");
             }
             Console.WriteLine("SENT");
-            //var x = Encoding.ASCII.GetBytes(msg);
-            stream.Write(msg, 0, msg.Length);
+            try
+            {
+                stream.Write(msg, 0, msg.Length);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void send(string msg)
@@ -154,10 +192,23 @@ namespace ELM327_PID_DataCollector
             {
                 Console.WriteLine("No stream yet");
             }
-            Console.WriteLine("SENT");
-            //var x = Encoding.ASCII.GetBytes(msg);
             var msgByte = Encoding.ASCII.GetBytes(msg);
-            stream.Write(msgByte, 0, msgByte.Length);
+            try
+            {
+                stream.Write(msgByte, 0, msgByte.Length);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+        }
+
+        public void Stop()
+        {
+            forceStop= true;
+            Dispose();
+            stream.Close();
         }
     }
 }
