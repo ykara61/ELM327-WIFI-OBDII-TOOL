@@ -11,13 +11,20 @@ namespace ELM327_PID_DataCollector
 
         static void Main(string[] args)
         {
+            Console.WriteLine("*ELM 327 WiFi Data Collector 2022*");
+            Console.WriteLine("Developed By sukurcan61");
+            Console.WriteLine("***************************");
 
-            foreach (var i in Helpers.HelperTool.ReadJsonConfiguration(Helpers.HelperTool.ReadResource("PID_Values.json")))
-            {
-                Console.WriteLine(i.Description);
-            }
 
-            Elm327wifi elmObd = new Elm327wifi("192.168.43.170",35000);
+            Console.Write("Enter OBD Device IP address (ex:192.168.0.10): ");
+            var Ip = Console.ReadLine();
+            Console.Write("Enter OBD Device port number (ex:35000): ");
+            int.TryParse(Console.ReadLine(),out int port);
+
+            Console.WriteLine("***************************");
+
+
+            Elm327wifi elmObd = new Elm327wifi(Ip,port);
 
             while (true)
             {

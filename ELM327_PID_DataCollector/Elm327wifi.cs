@@ -1,4 +1,5 @@
 ﻿using ELM327_PID_DataCollector.Helpers;
+using ELM327_PID_DataCollector.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace ELM327_PID_DataCollector
     {
         private string ip { get; set; }
         private int port { get; set; }
-
         private TcpClientOBD client;
         private AutoResetEvent arEvent;
         private AutoResetEvent dataReceivedEvent;
         public int totalAvailablePIDcount = 0;
         public List<string> PIDlist = new List<string>();
+        private List<PIDvalue> pidValues = new List<PIDvalue>();
+
         private enum Mode
         {
             PIDdetector,
@@ -28,13 +30,9 @@ namespace ELM327_PID_DataCollector
 
         public Elm327wifi(string ip,int port)
         {
-            
+            pidValues = Helpers.HelperTool.ReadJsonConfiguration(Helpers.HelperTool.ReadResource("PID_Values.json"));
             this.ip= ip;
             this.port= port;
-            Console.WriteLine("*ELM 327 WiFi Data Collector 2022*");
-            Console.WriteLine("Created By sukurcan61");
-            Console.WriteLine(".....");
-            Console.WriteLine();
         }
 
         public void Start()
@@ -42,7 +40,7 @@ namespace ELM327_PID_DataCollector
             Console.WriteLine("Options:");
             Console.WriteLine("1- Get available PIDs");
             Console.WriteLine("2- Get Current Vehicle Data");
-            Console.WriteLine();
+            Console.WriteLine("***************************");
             Console.WriteLine("Enter your option:");
             var userOutput = Console.ReadLine();
             forceStop = false;
@@ -121,10 +119,12 @@ namespace ELM327_PID_DataCollector
                         }
                         Console.WriteLine("Total available pid value count : " + totalAvailablePIDcount);
                         Console.WriteLine();
+                        Console.WriteLine("********************************");
                         foreach (var i in PIDlist)
                         {
-                            Console.Write(i + ",");
+                            Console.WriteLine(i);
                         }
+                        Console.WriteLine("********************************");
                     });
 
                     break;
@@ -155,8 +155,6 @@ namespace ELM327_PID_DataCollector
             return output.ToUpper();
         }
 
-
-
         private void Client_PidMessageArrived(string message)
         {
             switch (mode)
@@ -164,7 +162,6 @@ namespace ELM327_PID_DataCollector
                 case Mode.PIDdetector:
                     if (!message.Contains("NO DATA"))
                     {
-
                         totalAvailablePIDcount++;
                         Console.WriteLine("Totally " + totalAvailablePIDcount + " PID value found!");
                         Console.WriteLine("Analyzing...");
@@ -176,16 +173,13 @@ namespace ELM327_PID_DataCollector
                     if (message.Contains("41 0D"))
                     {
                         var xx = message.Split("41 0D ")[1];
-                        var spd = (message.Split("41 0D ")[1].Substring(0, 2));
-
+                        var spd = (message.Split("41 0D ")[1].Replace(" ", "").Substring(0, 2));
                         Console.WriteLine("SPEED : " + Convert.ToInt32(HelperTool.hex2bin(spd), 2));
                     }
                     else if (message.Contains("41 0C"))
                     {
                         var xx = message.Split("41 0C ")[1];
                         var rpm = (message.Split("41 0C ")[1].Replace(" ", "").Substring(0, 4));
-
-
                         Console.WriteLine("RPM : " + Convert.ToInt32(HelperTool.hex2bin(rpm), 2) / 4);
                     }
                     dataReceivedEvent.Set();

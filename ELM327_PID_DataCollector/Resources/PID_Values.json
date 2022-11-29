@@ -1,1162 +1,2462 @@
 [
- {
-  "PID_DECIMAL": 0,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [01 - 20]",
-  "Formula": "Bit encoded [A7..D0] == [PID $01..PID $20]"
- },
- {
-  "PID_DECIMAL": 1,
-  "Data_bytes_returned": 4,
-  "Description": "Monitor status since DTCs cleared.",
-  "Formula": "Bit encoded."
- },
- {
-  "PID_DECIMAL": 2,
-  "Data_bytes_returned": 2,
-  "Description": "Freeze DTC"
- },
- {
-  "PID_DECIMAL": 3,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel system status",
-  "Formula": "Bit encoded"
- },
- {
-  "PID_DECIMAL": 4,
-  "Data_bytes_returned": 1,
-  "Description": "Calculated engine load",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%",
-  "Formula": "(or )"
- },
- {
-  "PID_DECIMAL": 5,
-  "Data_bytes_returned": 1,
-  "Description": "Engine coolant temperature",
-  "Min value": -40,
-  "Max value": 215,
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 6,
-  "Data_bytes_returned": 1,
-  "Description": "Short term fuel trim—Bank 1",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%",
-  "Formula": "(or  )"
- },
- {
-  "PID_DECIMAL": 7,
-  "Data_bytes_returned": 1,
-  "Description": "Long term fuel trim—Bank 1",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%",
-  "Formula": "(or  )"
- },
- {
-  "PID_DECIMAL": 8,
-  "Data_bytes_returned": 1,
-  "Description": "Short term fuel trim—Bank 2",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%",
-  "Formula": "(or  )"
- },
- {
-  "PID_DECIMAL": 9,
-  "Data_bytes_returned": 1,
-  "Description": "Long term fuel trim—Bank 2",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%",
-  "Formula": "(or  )"
- },
- {
-  "PID_DECIMAL": 10,
-  "Data_bytes_returned": 1,
-  "Description": "Fuel pressure",
-  "Min value": 0,
-  "Max value": 765,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 11,
-  "Data_bytes_returned": 1,
-  "Description": "Intake manifold absolute pressure",
-  "Min value": 0,
-  "Max value": 255,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 12,
-  "Data_bytes_returned": 2,
-  "Description": "Engine speed",
-  "Min value": 0,
-  "Max value": "16,383.75",
-  "Units": "rpm"
- },
- {
-  "PID_DECIMAL": 13,
-  "Data_bytes_returned": 1,
-  "Description": "Vehicle speed",
-  "Min value": 0,
-  "Max value": 255,
-  "Units": "km\/h"
- },
- {
-  "PID_DECIMAL": 14,
-  "Data_bytes_returned": 1,
-  "Description": "Timing advance",
-  "Min value": -64,
-  "Max value": "63.5",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 15,
-  "Data_bytes_returned": 1,
-  "Description": "Intake air temperature",
-  "Min value": -40,
-  "Max value": 215,
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 16,
-  "Data_bytes_returned": 2,
-  "Description": "Mass air flow sensor (MAF) air flow rate",
-  "Min value": 0,
-  "Max value": "655.35",
-  "Units": "g\/s"
- },
- {
-  "PID_DECIMAL": 17,
-  "Data_bytes_returned": 1,
-  "Description": "Throttle position",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 18,
-  "Data_bytes_returned": 1,
-  "Description": "Commanded secondary air status",
-  "Formula": "Bit encoded"
- },
- {
-  "PID_DECIMAL": 19,
-  "Data_bytes_returned": 1,
-  "Description": "Oxygen sensors present",
-  "Formula": "[A0..A3] == Bank 1, Sensors 1-4. [A4..A7] == Bank 2..."
- },
- {
-  "PID_DECIMAL": 20,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 1\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 21,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 2\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 22,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 3\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 23,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 4\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 24,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 5\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 25,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 6\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 26,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 7\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 27,
-  "Data_bytes_returned": 2,
-  "Description": "Oxygen Sensor 8\nA: Voltage\nB: Short term fuel trim",
-  "Min value": "0\n-100",
-  "Max value": "1.275\n99.2",
-  "Units": "V%",
-  "Formula": "(if B==$FF, sensor is not used in trim calculation)"
- },
- {
-  "PID_DECIMAL": 28,
-  "Data_bytes_returned": 1,
-  "Description": "OBD standards this vehicle conforms to",
-  "Min value": 1,
-  "Max value": 250,
-  "Units": "-",
-  "Formula": "enumerated"
- },
- {
-  "PID_DECIMAL": 29,
-  "Data_bytes_returned": 1,
-  "Description": "Oxygen sensors present",
-  "Formula": "Similar to PID 13, but [A0..A7] == [B1S1, B1S2, B2S1, B2S2, B3S1, B3S2, B4S1, B4S2]"
- },
- {
-  "PID_DECIMAL": 30,
-  "Data_bytes_returned": 1,
-  "Description": "Auxiliary input status",
-  "Formula": "A0 == Power Take Off (PTO) status (1 == active)\n[A1..A7] not used"
- },
- {
-  "PID_DECIMAL": 31,
-  "Data_bytes_returned": 2,
-  "Description": "Run time since engine start",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "s"
- },
- {
-  "PID_DECIMAL": 32,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [21 - 40]",
-  "Formula": "Bit encoded [A7..D0] == [PID $21..PID $40]"
- },
- {
-  "PID_DECIMAL": 33,
-  "Data_bytes_returned": 2,
-  "Description": "Distance traveled with malfunction indicator lamp (MIL) on",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "km"
- },
- {
-  "PID_DECIMAL": 34,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel Rail Pressure (relative to manifold vacuum)",
-  "Min value": 0,
-  "Max value": 5177265,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 35,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel Rail Gauge Pressure",
-  "Min value": 0,
-  "Max value": 655.35,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 36,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 1\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Min value": "\n",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 37,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 2\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 38,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 3\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 39,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 4\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 40,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 5\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 41,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 6\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 42,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 7\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 43,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 8\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Voltage",
-  "Units": "ratio\nV"
- },
- {
-  "PID_DECIMAL": 44,
-  "Data_bytes_returned": 1,
-  "Description": "Commanded Exhaust gas recirculation",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 45,
-  "Data_bytes_returned": 1,
-  "Description": "Exhaust gas recirculation Error",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 46,
-  "Data_bytes_returned": 1,
-  "Description": "Commanded evaporative purge",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 47,
-  "Data_bytes_returned": 1,
-  "Description": "Fuel Tank Level Input",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 48,
-  "Data_bytes_returned": 1,
-  "Description": "Warm-ups since codes cleared",
-  "Min value": 0,
-  "Max value": 255,
-  "Units": "count"
- },
- {
-  "PID_DECIMAL": 49,
-  "Data_bytes_returned": 2,
-  "Description": "Distance traveled since codes cleared",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "km"
- },
- {
-  "PID_DECIMAL": 50,
-  "Data_bytes_returned": 2,
-  "Description": "Evap. System Vapor Pressure",
-  "Min value": -8.192,
-  "Max value": "8191.75",
-  "Units": "Pa",
-  "Formula": "(AB is two's complement signed)"
- },
- {
-  "PID_DECIMAL": 51,
-  "Data_bytes_returned": 1,
-  "Description": "Absolute Barometric Pressure",
-  "Min value": 0,
-  "Max value": 255,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 52,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 1\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 53,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 2\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 54,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 3\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 55,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 4\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 56,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 5\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 57,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 6\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 58,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 7\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 59,
-  "Data_bytes_returned": 4,
-  "Description": "Oxygen Sensor 8\nAB: Air-Fuel Equivalence Ratio (lambda,λ)\nCD: Current",
-  "Units": "ratio\nmA"
- },
- {
-  "PID_DECIMAL": 60,
-  "Data_bytes_returned": 2,
-  "Description": "Catalyst Temperature: Bank 1, Sensor 1",
-  "Min value": -40,
-  "Max value": "6,513.5",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 61,
-  "Data_bytes_returned": 2,
-  "Description": "Catalyst Temperature: Bank 2, Sensor 1",
-  "Min value": -40,
-  "Max value": "6,513.5",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 62,
-  "Data_bytes_returned": 2,
-  "Description": "Catalyst Temperature: Bank 1, Sensor 2",
-  "Min value": -40,
-  "Max value": "6,513.5",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 63,
-  "Data_bytes_returned": 2,
-  "Description": "Catalyst Temperature: Bank 2, Sensor 2",
-  "Min value": -40,
-  "Max value": "6,513.5",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 64,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [41 - 60]",
-  "Formula": "Bit encoded [A7..D0] == [PID $41..PID $60]"
- },
- {
-  "PID_DECIMAL": 65,
-  "Data_bytes_returned": 4,
-  "Description": "Monitor status this drive cycle",
-  "Formula": "Bit encoded"
- },
- {
-  "PID_DECIMAL": 66,
-  "Data_bytes_returned": 2,
-  "Description": "Control module voltage",
-  "Min value": 0,
-  "Max value": 65535,
-  "Units": "V"
- },
- {
-  "PID_DECIMAL": 67,
-  "Data_bytes_returned": 2,
-  "Description": "Absolute load value",
-  "Min value": 0,
-  "Max value": 25.7,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 68,
-  "Data_bytes_returned": 2,
-  "Description": "Commanded Air-Fuel Equivalence Ratio (lambda,λ)",
-  "Units": "ratio"
- },
- {
-  "PID_DECIMAL": 69,
-  "Data_bytes_returned": 1,
-  "Description": "Relative throttle position",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 70,
-  "Data_bytes_returned": 1,
-  "Description": "Ambient air temperature",
-  "Min value": -40,
-  "Max value": 215,
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 71,
-  "Data_bytes_returned": 1,
-  "Description": "Absolute throttle position B",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 72,
-  "Data_bytes_returned": 1,
-  "Description": "Absolute throttle position C",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 73,
-  "Data_bytes_returned": 1,
-  "Description": "Accelerator pedal position D",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 74,
-  "Data_bytes_returned": 1,
-  "Description": "Accelerator pedal position E",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 75,
-  "Data_bytes_returned": 1,
-  "Description": "Accelerator pedal position F",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 76,
-  "Data_bytes_returned": 1,
-  "Description": "Commanded throttle actuator",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 77,
-  "Data_bytes_returned": 2,
-  "Description": "Time run with MIL on",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "min"
- },
- {
-  "PID_DECIMAL": 78,
-  "Data_bytes_returned": 2,
-  "Description": "Time since trouble codes cleared",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "min"
- },
- {
-  "PID_DECIMAL": 79,
-  "Data_bytes_returned": 4,
-  "Description": "Maximum value for Fuel–Air equivalence ratio, oxygen sensor voltage, oxygen sensor current, and intake manifold absolute pressure",
-  "Min value": "0, 0, 0, 0",
-  "Max value": "255, 255, 255, 2550",
-  "Units": "ratio, V, mA, kPa",
-  "Formula": ", , ,"
- },
- {
-  "PID_DECIMAL": 80,
-  "Data_bytes_returned": 4,
-  "Description": "Maximum value for air flow rate from mass air flow sensor",
-  "Min value": 0,
-  "Max value": 2550,
-  "Units": "g\/s",
-  "Formula": "; , , and  are reserved for future use"
- },
- {
-  "PID_DECIMAL": 81,
-  "Data_bytes_returned": 1,
-  "Description": "Fuel Type",
-  "Formula": "From fuel type table"
- },
- {
-  "PID_DECIMAL": 82,
-  "Data_bytes_returned": 1,
-  "Description": "Ethanol fuel %",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 83,
-  "Data_bytes_returned": 2,
-  "Description": "Absolute Evap system Vapor Pressure",
-  "Min value": 0,
-  "Max value": 327675,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 84,
-  "Data_bytes_returned": 2,
-  "Description": "Evap system vapor pressure",
-  "Min value": -32.768,
-  "Max value": 32.767,
-  "Units": "Pa",
-  "Formula": "(AB is two's complement signed)"
- },
- {
-  "PID_DECIMAL": 85,
-  "Data_bytes_returned": 2,
-  "Description": "Short term secondary oxygen sensor trim, A: bank 1, B: bank 3",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 86,
-  "Data_bytes_returned": 2,
-  "Description": "Long term secondary oxygen sensor trim, A: bank 1, B: bank 3",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 87,
-  "Data_bytes_returned": 2,
-  "Description": "Short term secondary oxygen sensor trim, A: bank 2, B: bank 4",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 88,
-  "Data_bytes_returned": 2,
-  "Description": "Long term secondary oxygen sensor trim, A: bank 2, B: bank 4",
-  "Min value": -100,
-  "Max value": "99.2",
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 89,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel rail absolute pressure",
-  "Min value": 0,
-  "Max value": 655.35,
-  "Units": "kPa"
- },
- {
-  "PID_DECIMAL": 90,
-  "Data_bytes_returned": 1,
-  "Description": "Relative accelerator pedal position",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 91,
-  "Data_bytes_returned": 1,
-  "Description": "Hybrid battery pack remaining life",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 92,
-  "Data_bytes_returned": 1,
-  "Description": "Engine oil temperature",
-  "Min value": -40,
-  "Max value": 210,
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 93,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel injection timing",
-  "Min value": "-210.00",
-  "Max value": 301992,
-  "Units": "°"
- },
- {
-  "PID_DECIMAL": 94,
-  "Data_bytes_returned": 2,
-  "Description": "Engine fuel rate",
-  "Min value": 0,
-  "Max value": "3212.75",
-  "Units": "L\/h"
- },
- {
-  "PID_DECIMAL": 95,
-  "Data_bytes_returned": 1,
-  "Description": "Emission requirements to which vehicle is designed",
-  "Formula": "Bit Encoded"
- },
- {
-  "PID_DECIMAL": 96,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [61 - 80]",
-  "Formula": "Bit encoded [A7..D0] == [PID $61..PID $80]"
- },
- {
-  "PID_DECIMAL": 97,
-  "Data_bytes_returned": 1,
-  "Description": "Driver's demand engine - percent torque",
-  "Min value": -125,
-  "Max value": 130,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 98,
-  "Data_bytes_returned": 1,
-  "Description": "Actual engine - percent torque",
-  "Min value": -125,
-  "Max value": 130,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 99,
-  "Data_bytes_returned": 2,
-  "Description": "Engine reference torque",
-  "Min value": 0,
-  "Max value": 65.535,
-  "Units": "N⋅m"
- },
- {
-  "PID_DECIMAL": 100,
-  "Data_bytes_returned": 5,
-  "Description": "Engine percent torque data",
-  "Min value": -125,
-  "Max value": 130,
-  "Units": "%",
-  "Formula": "Idle\n Engine point 1\n Engine point 2\n Engine point 3\n Engine point 4"
- },
- {
-  "PID_DECIMAL": 101,
-  "Data_bytes_returned": 2,
-  "Description": "Auxiliary input \/ output supported",
-  "Formula": "Bit Encoded"
- },
- {
-  "PID_DECIMAL": 102,
-  "Data_bytes_returned": 5,
-  "Description": "Mass air flow sensor",
-  "Min value": 0,
-  "Max value": 204796875,
-  "Units": "g\/s",
-  "Formula": "[A0]== Sensor A Supported\n[A1]== Sensor B Supported\nSensor A:\nSensor B:"
- },
- {
-  "PID_DECIMAL": 103,
-  "Data_bytes_returned": 3,
-  "Description": "Engine coolant temperature",
-  "Min value": -40,
-  "Max value": 215,
-  "Units": "celsius",
-  "Formula": "[A0]== Sensor 1 Supported\n[A1]== Sensor 2 Supported\nSensor 1:\nSensor 2:"
- },
- {
-  "PID_DECIMAL": 104,
-  "Data_bytes_returned": 3,
-  "Description": "Intake air temperature sensor",
-  "Min value": -40,
-  "Max value": 215,
-  "Units": "celsius",
-  "Formula": "[A0]== Sensor 1 Supported\n[A1]== Sensor 2 Supported\nSensor 1:\nSensor 2:"
- },
- {
-  "PID_DECIMAL": 105,
-  "Data_bytes_returned": 7,
-  "Description": "Actual EGR, Commanded EGR, and EGR Error"
- },
- {
-  "PID_DECIMAL": 106,
-  "Data_bytes_returned": 5,
-  "Description": "Commanded Diesel intake air flow control and relative intake air flow position"
- },
- {
-  "PID_DECIMAL": 107,
-  "Data_bytes_returned": 5,
-  "Description": "Exhaust gas recirculation temperature"
- },
- {
-  "PID_DECIMAL": 108,
-  "Data_bytes_returned": 5,
-  "Description": "Commanded throttle actuator control and relative throttle position"
- },
- {
-  "PID_DECIMAL": 109,
-  "Data_bytes_returned": 11,
-  "Description": "Fuel pressure control system"
- },
- {
-  "PID_DECIMAL": 110,
-  "Data_bytes_returned": 9,
-  "Description": "Injection pressure control system"
- },
- {
-  "PID_DECIMAL": 111,
-  "Data_bytes_returned": 3,
-  "Description": "Turbocharger compressor inlet pressure"
- },
- {
-  "PID_DECIMAL": 112,
-  "Data_bytes_returned": 10,
-  "Description": "Boost pressure control"
- },
- {
-  "PID_DECIMAL": 113,
-  "Data_bytes_returned": 6,
-  "Description": "Variable Geometry turbo (VGT) control"
- },
- {
-  "PID_DECIMAL": 114,
-  "Data_bytes_returned": 5,
-  "Description": "Wastegate control"
- },
- {
-  "PID_DECIMAL": 115,
-  "Data_bytes_returned": 5,
-  "Description": "Exhaust pressure"
- },
- {
-  "PID_DECIMAL": 116,
-  "Data_bytes_returned": 5,
-  "Description": "Turbocharger RPM"
- },
- {
-  "PID_DECIMAL": 117,
-  "Data_bytes_returned": 7,
-  "Description": "Turbocharger temperature"
- },
- {
-  "PID_DECIMAL": 118,
-  "Data_bytes_returned": 7,
-  "Description": "Turbocharger temperature"
- },
- {
-  "PID_DECIMAL": 119,
-  "Data_bytes_returned": 5,
-  "Description": "Charge air cooler temperature (CACT)"
- },
- {
-  "PID_DECIMAL": 120,
-  "Data_bytes_returned": 9,
-  "Description": "Exhaust Gas temperature (EGT) Bank 1",
-  "Formula": "Special PID"
- },
- {
-  "PID_DECIMAL": 121,
-  "Data_bytes_returned": 9,
-  "Description": "Exhaust Gas temperature (EGT) Bank 2",
-  "Formula": "Special PID"
- },
- {
-  "PID_DECIMAL": 122,
-  "Data_bytes_returned": 7,
-  "Description": "Diesel particulate filter (DPF)differential pressure"
- },
- {
-  "PID_DECIMAL": 123,
-  "Data_bytes_returned": 7,
-  "Description": "Diesel particulate filter (DPF)"
- },
- {
-  "PID_DECIMAL": 124,
-  "Data_bytes_returned": 9,
-  "Description": "Diesel Particulate filter (DPF) temperature",
-  "Units": "celsius"
- },
- {
-  "PID_DECIMAL": 125,
-  "Data_bytes_returned": 1,
-  "Description": "NOx NTE (Not-To-Exceed) control area status"
- },
- {
-  "PID_DECIMAL": 126,
-  "Data_bytes_returned": 1,
-  "Description": "PM NTE (Not-To-Exceed) control area status"
- },
- {
-  "PID_DECIMAL": 127,
-  "Data_bytes_returned": 13,
-  "Description": "Engine run time [b]",
-  "Units": "s"
- },
- {
-  "PID_DECIMAL": 128,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [81 - A0]",
-  "Formula": "Bit encoded [A7..D0] == [PID $81..PID $A0]"
- },
- {
-  "PID_DECIMAL": 129,
-  "Data_bytes_returned": 41,
-  "Description": "Engine run time for Auxiliary Emissions Control Device(AECD)"
- },
- {
-  "PID_DECIMAL": 130,
-  "Data_bytes_returned": 41,
-  "Description": "Engine run time for Auxiliary Emissions Control Device(AECD)"
- },
- {
-  "PID_DECIMAL": 131,
-  "Data_bytes_returned": 9,
-  "Description": "NOx sensor"
- },
- {
-  "PID_DECIMAL": 132,
-  "Data_bytes_returned": 1,
-  "Description": "Manifold surface temperature"
- },
- {
-  "PID_DECIMAL": 133,
-  "Data_bytes_returned": 10,
-  "Description": "NOx reagent system"
- },
- {
-  "PID_DECIMAL": 134,
-  "Data_bytes_returned": 5,
-  "Description": "Particulate matter (PM) sensor"
- },
- {
-  "PID_DECIMAL": 135,
-  "Data_bytes_returned": 5,
-  "Description": "Intake manifold absolute pressure"
- },
- {
-  "PID_DECIMAL": 136,
-  "Data_bytes_returned": 13,
-  "Description": "SCR Induce System"
- },
- {
-  "PID_DECIMAL": 137,
-  "Data_bytes_returned": 41,
-  "Description": "Run Time for AECD #11-#15"
- },
- {
-  "PID_DECIMAL": 138,
-  "Data_bytes_returned": 41,
-  "Description": "Run Time for AECD #16-#20"
- },
- {
-  "PID_DECIMAL": 139,
-  "Data_bytes_returned": 7,
-  "Description": "Diesel Aftertreatment"
- },
- {
-  "PID_DECIMAL": 140,
-  "Data_bytes_returned": 17,
-  "Description": "O2 Sensor (Wide Range)"
- },
- {
-  "PID_DECIMAL": 141,
-  "Data_bytes_returned": 1,
-  "Description": "Throttle Position G",
-  "Min value": 0,
-  "Max value": 100,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 142,
-  "Data_bytes_returned": 1,
-  "Description": "Engine Friction - Percent Torque",
-  "Min value": -125,
-  "Max value": 130,
-  "Units": "%"
- },
- {
-  "PID_DECIMAL": 143,
-  "Data_bytes_returned": 7,
-  "Description": "PM Sensor Bank 1 & 2"
- },
- {
-  "PID_DECIMAL": 144,
-  "Data_bytes_returned": 3,
-  "Description": "WWH-OBD Vehicle OBD System Information",
-  "Units": "h"
- },
- {
-  "PID_DECIMAL": 145,
-  "Data_bytes_returned": 5,
-  "Description": "WWH-OBD Vehicle OBD System Information",
-  "Units": "h"
- },
- {
-  "PID_DECIMAL": 146,
-  "Data_bytes_returned": 2,
-  "Description": "Fuel System Control"
- },
- {
-  "PID_DECIMAL": 147,
-  "Data_bytes_returned": 3,
-  "Description": "WWH-OBD Vehicle OBD Counters support",
-  "Units": "h"
- },
- {
-  "PID_DECIMAL": 148,
-  "Data_bytes_returned": 12,
-  "Description": "NOx Warning And Inducement System"
- },
- {
-  "PID_DECIMAL": 152,
-  "Data_bytes_returned": 9,
-  "Description": "Exhaust Gas Temperature Sensor"
- },
- {
-  "PID_DECIMAL": 153,
-  "Data_bytes_returned": 9,
-  "Description": "Exhaust Gas Temperature Sensor"
- },
- {
-  "PID_DECIMAL": 154,
-  "Data_bytes_returned": 6,
-  "Description": "Hybrid\/EV Vehicle System Data, Battery, Voltage"
- },
- {
-  "PID_DECIMAL": 155,
-  "Data_bytes_returned": 4,
-  "Description": "Diesel Exhaust Fluid Sensor Data"
- },
- {
-  "PID_DECIMAL": 156,
-  "Data_bytes_returned": 17,
-  "Description": "O2 Sensor Data"
- },
- {
-  "PID_DECIMAL": 157,
-  "Data_bytes_returned": 4,
-  "Description": "Engine Fuel Rate",
-  "Units": "g\/s"
- },
- {
-  "PID_DECIMAL": 158,
-  "Data_bytes_returned": 2,
-  "Description": "Engine Exhaust Flow Rate",
-  "Units": "kg\/h"
- },
- {
-  "PID_DECIMAL": 159,
-  "Data_bytes_returned": 9,
-  "Description": "Fuel System Percentage Use"
- },
- {
-  "PID_DECIMAL": 160,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [A1 - C0]",
-  "Formula": "Bit encoded [A7..D0] == [PID $A1..PID $C0]"
- },
- {
-  "PID_DECIMAL": 161,
-  "Data_bytes_returned": 9,
-  "Description": "NOx Sensor Corrected Data",
-  "Units": "ppm"
- },
- {
-  "PID_DECIMAL": 162,
-  "Data_bytes_returned": 2,
-  "Description": "Cylinder Fuel Rate",
-  "Min value": 0,
-  "Max value": 204796875,
-  "Units": "mg\/stroke"
- },
- {
-  "PID_DECIMAL": 163,
-  "Data_bytes_returned": 9,
-  "Description": "Evap System Vapor Pressure",
-  "Units": "Pa"
- },
- {
-  "PID_DECIMAL": 164,
-  "Data_bytes_returned": 4,
-  "Description": "Transmission Actual Gear",
-  "Min value": 0,
-  "Max value": 65535,
-  "Units": "ratio",
-  "Formula": "[A1]==Supported"
- },
- {
-  "PID_DECIMAL": 165,
-  "Data_bytes_returned": 4,
-  "Description": "Commanded Diesel Exhaust Fluid Dosing",
-  "Min value": 0,
-  "Max value": "127.5",
-  "Units": "%",
-  "Formula": "[A0]= 1:Supported; 0:Unsupported"
- },
- {
-  "PID_DECIMAL": 166,
-  "Data_bytes_returned": 4,
-  "Description": "Odometer [c]",
-  "Min value": 0,
-  "Max value": "429,496,729.5",
-  "Units": "km"
- },
- {
-  "PID_DECIMAL": 167,
-  "Data_bytes_returned": 4,
-  "Description": "NOx Sensor Concentration Sensors 3 and 4"
- },
- {
-  "PID_DECIMAL": 168,
-  "Data_bytes_returned": 4,
-  "Description": "NOx Sensor Corrected Concentration Sensors 3 and 4"
- },
- {
-  "PID_DECIMAL": 169,
-  "Data_bytes_returned": 4,
-  "Description": "ABS Disable Switch State",
-  "Formula": "[A0]= 1:Supported; 0:Unsupported[B0]= 1:Yes;0:No"
- },
- {
-  "PID_DECIMAL": 192,
-  "Data_bytes_returned": 4,
-  "Description": "PIDs supported [C1 - E0]",
-  "Formula": "Bit encoded [A7..D0] == [PID $C1..PID $E0]"
- },
- {
-  "PID_DECIMAL": 195,
-  "Data_bytes_returned": "?",
-  "Description": "?",
-  "Formula": "Returns numerous data, including Drive Condition ID and Engine Speed"
- },
- {
-  "PID_DECIMAL": 196,
-  "Data_bytes_returned": "?",
-  "Description": "?",
-  "Formula": "B5 is Engine Idle Request\nB6 is Engine Stop Request"
- }
+  {
+    "PIDdec": 0,
+    "PIDhex": "00",
+    "Name": "PIDsSupported_01_20",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 1,
+    "PIDhex": "01",
+    "Name": "MonitorStatus",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 2,
+    "PIDhex": "02",
+    "Name": "FreezeDTC",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 3,
+    "PIDhex": "03",
+    "Name": "FuelSystemStatus",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 4,
+    "PIDhex": "04",
+    "Name": "CalcEngineLoad",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 5,
+    "PIDhex": "05",
+    "Name": "EngineCoolantTemp",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 6,
+    "PIDhex": "06",
+    "Name": "ShortFuelTrimBank1",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 7,
+    "PIDhex": "07",
+    "Name": "LongFuelTrimBank1",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 8,
+    "PIDhex": "08",
+    "Name": "ShortFuelTrimBank2",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 9,
+    "PIDhex": "09",
+    "Name": "LongFuelTrimBank2",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 10,
+    "PIDhex": "0A",
+    "Name": "FuelPressure",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 3,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 765,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 11,
+    "PIDhex": "0B",
+    "Name": "IntakeManiAbsPress",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 12,
+    "PIDhex": "0C",
+    "Name": "EngineRPM",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.25,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 16384,
+    "Unit": "rpm"
+  },
+  {
+    "PIDdec": 13,
+    "PIDhex": "0D",
+    "Name": "VehicleSpeed",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "km/h"
+  },
+  {
+    "PIDdec": 14,
+    "PIDhex": "0E",
+    "Name": "TimingAdvance",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.5,
+    "Offset": -64,
+    "Min": -64,
+    "Max": 64,
+    "Unit": "deg"
+  },
+  {
+    "PIDdec": 15,
+    "PIDhex": "0F",
+    "Name": "IntakeAirTemperature",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 16,
+    "PIDhex": 10,
+    "Name": "MAFAirFlowRate",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.01,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 655,
+    "Unit": "grams/sec"
+  },
+  {
+    "PIDdec": 17,
+    "PIDhex": 11,
+    "Name": "ThrottlePosition",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 18,
+    "PIDhex": 12,
+    "Name": "CmdSecAirStatus",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 19,
+    "PIDhex": 13,
+    "Name": "OxySensorsPresent_2Banks",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 20,
+    "PIDhex": 14,
+    "Name": "OxySensor1_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 20,
+    "PIDhex": 14,
+    "Name": "OxySensor1_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 21,
+    "PIDhex": 15,
+    "Name": "OxySensor2_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 21,
+    "PIDhex": 15,
+    "Name": "OxySensor2_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 22,
+    "PIDhex": 16,
+    "Name": "OxySensor3_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 22,
+    "PIDhex": 16,
+    "Name": "OxySensor3_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 23,
+    "PIDhex": 17,
+    "Name": "OxySensor4_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 23,
+    "PIDhex": 17,
+    "Name": "OxySensor4_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 24,
+    "PIDhex": 18,
+    "Name": "OxySensor5_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 24,
+    "PIDhex": 18,
+    "Name": "OxySensor5_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 25,
+    "PIDhex": 19,
+    "Name": "OxySensor6_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 25,
+    "PIDhex": 19,
+    "Name": "OxySensor6_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 26,
+    "PIDhex": "1A",
+    "Name": "OxySensor7_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 26,
+    "PIDhex": "1A",
+    "Name": "OxySensor7_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 27,
+    "PIDhex": "1B",
+    "Name": "OxySensor8_Volt",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 1,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 27,
+    "PIDhex": "1B",
+    "Name": "OxySensor8_STFT",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 28,
+    "PIDhex": "1C",
+    "Name": "OBDStandard",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 29,
+    "PIDhex": "1D",
+    "Name": "OxySensorsPresent_4Banks",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 30,
+    "PIDhex": "1E",
+    "Name": "AuxiliaryInputStatus",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 31,
+    "PIDhex": "1F",
+    "Name": "TimeSinceEngStart",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "seconds"
+  },
+  {
+    "PIDdec": 32,
+    "PIDhex": 20,
+    "Name": "PIDsSupported_21_40",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 33,
+    "PIDhex": 21,
+    "Name": "DistanceMILOn",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "km"
+  },
+  {
+    "PIDdec": 34,
+    "PIDhex": 22,
+    "Name": "FuelRailPres",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.079,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 5177,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 35,
+    "PIDhex": 23,
+    "Name": "FuelRailGaug",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 10,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 655350,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 36,
+    "PIDhex": 24,
+    "Name": "OxySensor1_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 36,
+    "PIDhex": 24,
+    "Name": "OxySensor1_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 37,
+    "PIDhex": 25,
+    "Name": "OxySensor2_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 37,
+    "PIDhex": 25,
+    "Name": "OxySensor2_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 38,
+    "PIDhex": 26,
+    "Name": "OxySensor3_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 38,
+    "PIDhex": 26,
+    "Name": "OxySensor3_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 39,
+    "PIDhex": 27,
+    "Name": "OxySensor4_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 39,
+    "PIDhex": 27,
+    "Name": "OxySensor4_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 40,
+    "PIDhex": 28,
+    "Name": "OxySensor5_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 40,
+    "PIDhex": 28,
+    "Name": "OxySensor5_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 41,
+    "PIDhex": 29,
+    "Name": "OxySensor6_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 41,
+    "PIDhex": 29,
+    "Name": "OxySensor6_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 42,
+    "PIDhex": "2A",
+    "Name": "OxySensor7_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 42,
+    "PIDhex": "2A",
+    "Name": "OxySensor7_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 43,
+    "PIDhex": "2B",
+    "Name": "OxySensor8_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 43,
+    "PIDhex": "2B",
+    "Name": "OxySensor8_Volt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.0001220703125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 8,
+    "Unit": "volts"
+  },
+  {
+    "PIDdec": 44,
+    "PIDhex": "2C",
+    "Name": "CmdEGR",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 45,
+    "PIDhex": "2D",
+    "Name": "EGRError",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 46,
+    "PIDhex": "2E",
+    "Name": "CmdEvapPurge",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 47,
+    "PIDhex": "2F",
+    "Name": "FuelTankLevel",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 48,
+    "PIDhex": 30,
+    "Name": "WarmUpsSinceCodeClear",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "count"
+  },
+  {
+    "PIDdec": 49,
+    "PIDhex": 31,
+    "Name": "DistanceSinceCodeClear",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "km"
+  },
+  {
+    "PIDdec": 50,
+    "PIDhex": 32,
+    "Name": "EvapSysVaporPres",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.25,
+    "Offset": 0,
+    "Min": -8192,
+    "Max": 8192,
+    "Unit": "Pa"
+  },
+  {
+    "PIDdec": 51,
+    "PIDhex": 33,
+    "Name": "AbsBaroPres",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 52,
+    "PIDhex": 34,
+    "Name": "OxySensor1_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 52,
+    "PIDhex": 34,
+    "Name": "OxySensor1_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 53,
+    "PIDhex": 35,
+    "Name": "OxySensor2_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 53,
+    "PIDhex": 35,
+    "Name": "OxySensor2_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 54,
+    "PIDhex": 36,
+    "Name": "OxySensor3_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 54,
+    "PIDhex": 36,
+    "Name": "OxySensor3_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 55,
+    "PIDhex": 37,
+    "Name": "OxySensor4_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 55,
+    "PIDhex": 37,
+    "Name": "OxySensor4_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 56,
+    "PIDhex": 38,
+    "Name": "OxySensor5_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 56,
+    "PIDhex": 38,
+    "Name": "OxySensor5_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 57,
+    "PIDhex": 39,
+    "Name": "OxySensor6_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 57,
+    "PIDhex": 39,
+    "Name": "OxySensor6_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 58,
+    "PIDhex": "3A",
+    "Name": "OxySensor7_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 58,
+    "PIDhex": "3A",
+    "Name": "OxySensor7_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 59,
+    "PIDhex": "3B",
+    "Name": "OxySensor8_FAER",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 59,
+    "PIDhex": "3B",
+    "Name": "OxySensor8_Crnt",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.00390625,
+    "Offset": -128,
+    "Min": -128,
+    "Max": 128,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 60,
+    "PIDhex": "3C",
+    "Name": "CatTempBank1Sens1",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 6514,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 61,
+    "PIDhex": "3D",
+    "Name": "CatTempBank2Sens1",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 6514,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 62,
+    "PIDhex": "3E",
+    "Name": "CatTempBank1Sens2",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 6514,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 63,
+    "PIDhex": "3F",
+    "Name": "CatTempBank2Sens2",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 6514,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 64,
+    "PIDhex": 40,
+    "Name": "PIDsSupported_41_60",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 65,
+    "PIDhex": 41,
+    "Name": "MonStatusDriveCycle",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 66,
+    "PIDhex": 42,
+    "Name": "ControlModuleVolt",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.001,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 66,
+    "Unit": "V"
+  },
+  {
+    "PIDdec": 67,
+    "PIDhex": 43,
+    "Name": "AbsLoadValue",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 25700,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 68,
+    "PIDhex": 44,
+    "Name": "FuelAirCmdEquiv",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.00003051757813,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 69,
+    "PIDhex": 45,
+    "Name": "RelThrottlePos",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 70,
+    "PIDhex": 46,
+    "Name": "AmbientAirTemp",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 71,
+    "PIDhex": 47,
+    "Name": "AbsThrottlePosB",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 72,
+    "PIDhex": 48,
+    "Name": "AbsThrottlePosC",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 73,
+    "PIDhex": 49,
+    "Name": "AbsThrottlePosD",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 74,
+    "PIDhex": "4A",
+    "Name": "AbsThrottlePosE",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 75,
+    "PIDhex": "4B",
+    "Name": "AbsThrottlePosF",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 76,
+    "PIDhex": "4C",
+    "Name": "CmdThrottleAct",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 77,
+    "PIDhex": "4D",
+    "Name": "TimeRunMILOn",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "minutes"
+  },
+  {
+    "PIDdec": 78,
+    "PIDhex": "4E",
+    "Name": "TimeSinceCodeClear",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "minutes"
+  },
+  {
+    "PIDdec": 79,
+    "PIDhex": "4F",
+    "Name": "Max_FAER",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 79,
+    "PIDhex": "4F",
+    "Name": "Max_OxySensVol",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "V"
+  },
+  {
+    "PIDdec": 79,
+    "PIDhex": "4F",
+    "Name": "Max_OxySensCrnt",
+    "BitStart": 47,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 255,
+    "Unit": "mA"
+  },
+  {
+    "PIDdec": 79,
+    "PIDhex": "4F",
+    "Name": "Max_IntManiAbsPres",
+    "BitStart": 55,
+    "BitLength": 8,
+    "Scale": 10,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2550,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 80,
+    "PIDhex": 50,
+    "Name": "Max_AirFlowMAF",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 10,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2550,
+    "Unit": "g/s"
+  },
+  {
+    "PIDdec": 81,
+    "PIDhex": 51,
+    "Name": "FuelType",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 82,
+    "PIDhex": 52,
+    "Name": "EthanolFuelPct",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 83,
+    "PIDhex": 53,
+    "Name": "AbsEvapSysVapPres",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.005,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 328,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 84,
+    "PIDhex": 54,
+    "Name": "EvapSysVapPres",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": -32767,
+    "Min": -32767,
+    "Max": 32768,
+    "Unit": "Pa"
+  },
+  {
+    "PIDdec": 85,
+    "PIDhex": 55,
+    "Name": "ShortSecOxyTrimBank1",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 85,
+    "PIDhex": 55,
+    "Name": "ShortSecOxyTrimBank3",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 86,
+    "PIDhex": 56,
+    "Name": "LongSecOxyTrimBank1",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 86,
+    "PIDhex": 56,
+    "Name": "LongSecOxyTrimBank3",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 87,
+    "PIDhex": 57,
+    "Name": "ShortSecOxyTrimBank2",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 87,
+    "PIDhex": 57,
+    "Name": "ShortSecOxyTrimBank4",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 88,
+    "PIDhex": 58,
+    "Name": "LongSecOxyTrimBank2",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 88,
+    "PIDhex": 58,
+    "Name": "LongSecOxyTrimBank4",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.78125,
+    "Offset": -100,
+    "Min": -100,
+    "Max": 99,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 89,
+    "PIDhex": 59,
+    "Name": "FuelRailAbsPres",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 10,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 655350,
+    "Unit": "kPa"
+  },
+  {
+    "PIDdec": 90,
+    "PIDhex": "5A",
+    "Name": "RelAccelPedalPos",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 91,
+    "PIDhex": "5B",
+    "Name": "HybrBatPackRemLife",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 92,
+    "PIDhex": "5C",
+    "Name": "EngineOilTemp",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 93,
+    "PIDhex": "5D",
+    "Name": "FuelInjectionTiming",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.0078125,
+    "Offset": -210,
+    "Min": -210,
+    "Max": 302,
+    "Unit": "deg"
+  },
+  {
+    "PIDdec": 94,
+    "PIDhex": "5E",
+    "Name": "EngineFuelRate",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.05,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 3277,
+    "Unit": "L/h"
+  },
+  {
+    "PIDdec": 95,
+    "PIDhex": "5F",
+    "Name": "EmissionReq",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 96,
+    "PIDhex": 60,
+    "Name": "PIDsSupported_61_80",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 97,
+    "PIDhex": 61,
+    "Name": "DemandEngTorqPct",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 98,
+    "PIDhex": 62,
+    "Name": "ActualEngTorqPct",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 99,
+    "PIDhex": 63,
+    "Name": "EngRefTorq",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 65535,
+    "Unit": "Nm"
+  },
+  {
+    "PIDdec": 100,
+    "PIDhex": 64,
+    "Name": "EngPctTorq_Idle",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 100,
+    "PIDhex": 64,
+    "Name": "EngPctTorq_EP1",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 100,
+    "PIDhex": 64,
+    "Name": "EngPctTorq_EP2",
+    "BitStart": 47,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 100,
+    "PIDhex": 64,
+    "Name": "EngPctTorq_EP3",
+    "BitStart": 55,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 100,
+    "PIDhex": 64,
+    "Name": "EngPctTorq_EP4",
+    "BitStart": 63,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 101,
+    "PIDhex": 65,
+    "Name": "AuxInputOutput",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 102,
+    "PIDhex": 66,
+    "Name": "MAFSensorA",
+    "BitStart": 39,
+    "BitLength": 16,
+    "Scale": 0.03125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2048,
+    "Unit": "grams/sec"
+  },
+  {
+    "PIDdec": 102,
+    "PIDhex": 66,
+    "Name": "MAFSensorB",
+    "BitStart": 55,
+    "BitLength": 16,
+    "Scale": 0.03125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2048,
+    "Unit": "grams/sec"
+  },
+  {
+    "PIDdec": 103,
+    "PIDhex": 67,
+    "Name": "EngineCoolantTemp1",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 103,
+    "PIDhex": 67,
+    "Name": "EngineCoolantTemp2",
+    "BitStart": 47,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 104,
+    "PIDhex": 68,
+    "Name": "IntakeAirTempSens1",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 104,
+    "PIDhex": 68,
+    "Name": "IntakeAirTempSens2",
+    "BitStart": 47,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 215,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 105,
+    "PIDhex": 69,
+    "Name": "CmdEGR_EGRError",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 106,
+    "PIDhex": "6A",
+    "Name": "CmdDieselIntAir",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 107,
+    "PIDhex": "6B",
+    "Name": "ExhaustGasTemp",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 108,
+    "PIDhex": "6C",
+    "Name": "CmdThrottleActRel",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 109,
+    "PIDhex": "6D",
+    "Name": "FuelPresContrSys",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 110,
+    "PIDhex": "6E",
+    "Name": "InjPresContrSys",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 111,
+    "PIDhex": "6F",
+    "Name": "TurboComprPres",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 112,
+    "PIDhex": 70,
+    "Name": "BoostPresCntrl",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 113,
+    "PIDhex": 71,
+    "Name": "VariableGeoTurboVGTCtr",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 114,
+    "PIDhex": 72,
+    "Name": "WastegateControl",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 115,
+    "PIDhex": 73,
+    "Name": "ExhaustPressure",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 116,
+    "PIDhex": 74,
+    "Name": "TurbochargerRpm",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 117,
+    "PIDhex": 75,
+    "Name": "TurbochargerTemperature",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 118,
+    "PIDhex": 76,
+    "Name": "TurbochargerTemperature",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 119,
+    "PIDhex": 77,
+    "Name": "ChargeAirCoolerTemperature",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 120,
+    "PIDhex": 78,
+    "Name": "EGT_Bank1",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 121,
+    "PIDhex": 79,
+    "Name": "EGT_Bank2",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 122,
+    "PIDhex": "7A",
+    "Name": "DPF_DifferentialPressure",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 123,
+    "PIDhex": "7B",
+    "Name": "DPF",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 124,
+    "PIDhex": "7C",
+    "Name": "DPF_Temperature",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.1,
+    "Offset": -40,
+    "Min": -40,
+    "Max": 6514,
+    "Unit": "degC"
+  },
+  {
+    "PIDdec": 125,
+    "PIDhex": "7D",
+    "Name": "NOx_NTE_ControlAreaStatus",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 126,
+    "PIDhex": "7E",
+    "Name": "PM_NTE_ControlAreaStatus",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 127,
+    "PIDhex": "7F",
+    "Name": "EngineRunTime",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "seconds"
+  },
+  {
+    "PIDdec": 128,
+    "PIDhex": 80,
+    "Name": "PIDsSupported_81_A0",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 129,
+    "PIDhex": 81,
+    "Name": "EngineRunTime_AECD",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 130,
+    "PIDhex": 82,
+    "Name": "EngineRunTime_AECD",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 131,
+    "PIDhex": 83,
+    "Name": "NOxSensor",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 132,
+    "PIDhex": 84,
+    "Name": "ManifoldSurfaceTemperature",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 133,
+    "PIDhex": 85,
+    "Name": "NOxReagentSystem",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 134,
+    "PIDhex": 86,
+    "Name": "PM_Sensor",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 135,
+    "PIDhex": 87,
+    "Name": "IntakeManifoldAbsolutePressure",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 136,
+    "PIDhex": 88,
+    "Name": "SCR_InduceSystem",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 137,
+    "PIDhex": 89,
+    "Name": "RunTimeForAECD_11_15",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 138,
+    "PIDhex": "8A",
+    "Name": "RunTimeForAECD_16_20",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 139,
+    "PIDhex": "8B",
+    "Name": "DieselAftertreatment",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 140,
+    "PIDhex": "8C",
+    "Name": "O2Sensor_WideRange",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 141,
+    "PIDhex": "8D",
+    "Name": "ThrottlePositionG",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 0.3921568627,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 100,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 142,
+    "PIDhex": "8E",
+    "Name": "EngineFrictionPercentTorque",
+    "BitStart": 31,
+    "BitLength": 8,
+    "Scale": 1,
+    "Offset": -125,
+    "Min": -125,
+    "Max": 130,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 143,
+    "PIDhex": "8F",
+    "Name": "PMSensorBank1_2",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 144,
+    "PIDhex": 90,
+    "Name": "WWH_OBD_SysInfo",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "hours"
+  },
+  {
+    "PIDdec": 145,
+    "PIDhex": 91,
+    "Name": "WWH_OBD_SysInfo",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "hours"
+  },
+  {
+    "PIDdec": 146,
+    "PIDhex": 92,
+    "Name": "FuelSystemControl",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 147,
+    "PIDhex": 93,
+    "Name": "WWH_OBD_CtrSupport",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "hours"
+  },
+  {
+    "PIDdec": 148,
+    "PIDhex": 94,
+    "Name": "NOxWarningInducementSys",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 152,
+    "PIDhex": 98,
+    "Name": "EGT_Sensor",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 153,
+    "PIDhex": 99,
+    "Name": "EGT_Sensor",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 154,
+    "PIDhex": "9A",
+    "Name": "Hybrid_EV_System",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 155,
+    "PIDhex": "9B",
+    "Name": "DieselExhaustFluidSensorData",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 156,
+    "PIDhex": "9C",
+    "Name": "O2SensorData",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 157,
+    "PIDhex": "9D",
+    "Name": "EngineFuelRate",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "g/s"
+  },
+  {
+    "PIDdec": 158,
+    "PIDhex": "9E",
+    "Name": "EngineExhaustFlowRate",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "kg/h"
+  },
+  {
+    "PIDdec": 159,
+    "PIDhex": "9F",
+    "Name": "FuelSystemPercentageUse",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 160,
+    "PIDhex": "A0",
+    "Name": "PIDsSupported_A1_C0",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  },
+  {
+    "PIDdec": 161,
+    "PIDhex": "A1",
+    "Name": "NOxSensorCorrectedData",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": "ppm"
+  },
+  {
+    "PIDdec": 162,
+    "PIDhex": "A2",
+    "Name": "CylinderFuelRate",
+    "BitStart": 31,
+    "BitLength": 16,
+    "Scale": 0.03125,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 2048,
+    "Unit": "mg/stroke"
+  },
+  {
+    "PIDdec": 163,
+    "PIDhex": "A3",
+    "Name": "EvapSystemVaporPressure",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 164,
+    "PIDhex": "A4",
+    "Name": "TransmissionActualGear",
+    "BitStart": 47,
+    "BitLength": 16,
+    "Scale": 0.001,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 66,
+    "Unit": "ratio"
+  },
+  {
+    "PIDdec": 165,
+    "PIDhex": "A5",
+    "Name": "ComDieselExhaustFluidDosing",
+    "BitStart": 39,
+    "BitLength": 8,
+    "Scale": 0.5,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 128,
+    "Unit": "%"
+  },
+  {
+    "PIDdec": 166,
+    "PIDhex": "A6",
+    "Name": "Odometer",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 0.1,
+    "Offset": 0,
+    "Min": 0,
+    "Max": 429000000,
+    "Unit": "km"
+  },
+  {
+    "PIDdec": 167,
+    "PIDhex": "A7",
+    "Name": "NOxSensorConc3_4",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 168,
+    "PIDhex": "A8",
+    "Name": "NOxSensorCorrectConc3_4",
+    "BitStart": "",
+    "BitLength": "",
+    "Scale": "",
+    "Offset": "",
+    "Min": "",
+    "Max": "",
+    "Unit": ""
+  },
+  {
+    "PIDdec": 192,
+    "PIDhex": "C0",
+    "Name": "PIDsSupported_C1_E0",
+    "BitStart": 31,
+    "BitLength": 32,
+    "Scale": 1,
+    "Offset": 0,
+    "Min": "",
+    "Max": "",
+    "Unit": "Encoded"
+  }
 ]

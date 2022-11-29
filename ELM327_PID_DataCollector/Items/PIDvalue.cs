@@ -9,12 +9,15 @@ namespace ELM327_PID_DataCollector.Items
 {
     public class PIDvalue
     {
-        public int PID_DECIMAL { get; set; }
-        public object ?Data_bytes_returned { get; set; }
-        public string ?Description { get; set; }
-        public string ?Formula { get; set; }
-        public decimal ?Minvalue { get; set; }
-        public decimal ?Maxvalue { get; set; }
-        public string ?Units { get; set; }
+        public int PIDdec { get; set; }
+        public string PIDhex { get; set; }
+        public string Name { get; set; }
+        public int ?BitStart { get; set; }
+        public int ?BitLength { get; set; }
+        public object ?Scale { get; set; }
+        public object ?Offset { get; set; }
+        public object ?Min { get; set; }
+        public object ?Max { get; set; }
+        public string ?Unit { get; set; }
     }
 }
