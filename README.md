@@ -37,7 +37,10 @@ Application setup is quite simple. You need to connect WiFi AP that is automatic
 
 Alternatively, you can manually create an IoT thing using the AWS IoT console.  To start, let's navigate to the console and create an IoT thing called 'dotnetdevice'.
 
-![](/images/pic2.JPG)
+<p>
+    <img src="/Images/ELM327_NET6_CONSOLE_MAIN.png" alt>
+    <em>Application Main Console<em>
+</p>
 
 
 Let's associate the following policy with the thing.
@@ -76,69 +79,6 @@ openssl pkcs12 -export -in certificates\certificate.cert.pem -inkey certificates
 
 ![](/images/pic3.JPG)
 
-
-##  3c. Device Publisher using .NET Framework
-
-Let's create a windows application in Visual Studio 2017 and name it as 'Iotpublisher'.
-
-On project reference --> Manage Nuget pakcages --> Browse --> 'M2mqtt' and install M2mqtt.
-
-Import the following namespaces.
-
-```  c#
-using System;
-kodlar falan
-```
-
-Then create an instance of Mqtt client object with IoT endpoint, broker port for MQTT, X509Certificate object for root certificate, X5092certificate object for device certificate and Mqttsslprotocols enumeration for TLS1.2. 
-
-Once the connection is successful, publish to AWS IoT by specifying the topic and payload. The following code snippet covers all of these.  Be sure to update the iotEndpoint variable with the name of your account's IoT endpoint if it was not updated when running the provisioning script.
-
-
-```  c#
-kodlar falan
-            
-``` 
-
-Hit F5 in visual studio and you should see the messages getting pushed to the AWS IoT MQTT topic.
- 
-![](/images/pic5.JPG)
-
-
-The complete Visual Studio solution for this publisher is available under the 'Dotnetsamples' folder in this repository. 
-
-##  3d. Device Consumer using .NET Framework
-
-Let's create a windows application in Visual Studio 2017 and name it as 'Iotconsumer'.
-
-On project reference --> Manage Nuget pakcages --> Browse --> 'M2mqtt' and install M2mqtt.
-
-Import the following namespaces.
-
-```  c#
-using System;
-kodlar falan
-```
-
-Then create an instance of Mqtt client object with IoT endpoint, broker port for MQTT, X509Certificate object for root certificate, X5092certificate object for device certificate and Mqttsslprotocols enumeration for TLS1.2. 
-
-You can subscribe to the AWS IoT messages by specifying the Topic as string array and QoS level as byte array. Prior to this event callbacks for MqttMsgSubscribed and MqttMsgPublishReceived should be implemented. The following code snippet covers all of that.  Be sure to update the iotEndpoint variable with the name of your account's IoT endpoint if it was not updated when running the provisioning script.
-
-```  c#
-private static ManualResetEvent manualResetEvent;
-
-static void Main(string[] args)
-{
-kodlar falan
-    });
-}
-}
-``` 
-The complete visual studio solution for this publisher is available under the 'Dotnetsamples' folder in this repository.
-
-Hit F5 in Visual Studio and you should see the messages getting consumed by subscriber.
-
-![](/images/pic6.JPG)
 
 # 4. AWS IoT Device Publisher and Consumer using .NET Core
 
