@@ -2,7 +2,9 @@
 using ELM327_PID_DataCollector.Items;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +24,8 @@ namespace ELM327_PID_DataCollector
         private enum Mode
         {
             PIDdetector,
-            dataCollector
+            dataCollector,
+            freeMode
         };
 
         private Mode mode;
@@ -40,6 +43,7 @@ namespace ELM327_PID_DataCollector
             Console.WriteLine("Options:");
             Console.WriteLine("1- Get available PIDs");
             Console.WriteLine("2- Get Current Vehicle Data");
+            Console.WriteLine("3- Free Mode (Pre-Configured)");
             Console.WriteLine("***************************");
             Console.WriteLine("Enter your option:");
             var userOutput = Console.ReadLine();
@@ -50,11 +54,18 @@ namespace ELM327_PID_DataCollector
                     mode = Mode.PIDdetector;
                     arEvent = new AutoResetEvent(false);
                     GetAvailablePIDs();
+                    Console.ReadKey();
                     break;
                 case "2":
                     mode = Mode.dataCollector;
                     dataReceivedEvent = new AutoResetEvent(false);
                     GetVehicleData();
+                    Console.ReadKey();
+                    break;
+                case "3":
+                    mode = Mode.freeMode;
+                    dataReceivedEvent = new AutoResetEvent(false);
+                    StartFreeMode();
                     break;
                 default:
                     break;
@@ -87,6 +98,25 @@ namespace ELM327_PID_DataCollector
             client.OBDdeviceReady += Client_OBDdeviceReady;
 
             client.StartOBDdev();
+        }
+
+        private void StartFreeMode()
+        {
+            Console.WriteLine("...");
+            Console.WriteLine("Confifuration being Set ...");
+            Console.WriteLine("...");
+
+            client = new TcpClientOBD(ip, port);
+
+            
+            client.OBDdeviceReady += Client_OBDdeviceReady;
+
+            client.PidMessageArrived += Client_PidMessageArrived;
+
+            client.StartOBDdevFreeMode();
+            
+
+
         }
 
         public void Stop()
@@ -122,7 +152,7 @@ namespace ELM327_PID_DataCollector
                         Console.WriteLine("********************************");
                         foreach (var i in PIDlist)
                         {
-                            Console.WriteLine(i);
+                            Console.WriteLine(pidValues.Where(x=>x.PIDhex == i.Substring(2,2)).LastOrDefault().Name);
                         }
                         Console.WriteLine("********************************");
                     });
@@ -140,6 +170,16 @@ namespace ELM327_PID_DataCollector
                         }
 
                     });
+                    break;
+                case Mode.freeMode:
+                    while (!forceStop)
+                    {
+                        dataReceivedEvent.WaitOne(10000);
+                        Console.WriteLine("Type your message to send:");
+                        var message = Console.ReadLine();
+                        client.send(message+"\r");
+                        
+                    }
                     break;
                 default:
                     break;
@@ -184,10 +224,13 @@ namespace ELM327_PID_DataCollector
                     }
                     dataReceivedEvent.Set();
                     break;
+                case Mode.freeMode:
+                    Console.WriteLine("Received:"+message);
+                    dataReceivedEvent.Set();
+                    break;
                 default:
                     break;
             }
-
         }
     }
 }

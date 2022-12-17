@@ -30,7 +30,6 @@ namespace ELM327_PID_DataCollector
             {
                 elmObd.Start();
 
-                Console.ReadKey();
 
                 elmObd.Stop();
             }

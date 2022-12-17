@@ -120,6 +120,98 @@ namespace ELM327_PID_DataCollector
         }
 
 
+        public void StartOBDdevFreeMode()
+        {
+            forceStop = false;
+            bool Tryconnect = true;
+
+            while (Tryconnect)
+            {
+                try
+                {
+                    Connect(IPAddress.Parse(ip), port);
+                    stream = GetStream();
+                    stream.ReadTimeout = 1000;
+                    Tryconnect = false;
+                }
+                catch (SocketException e)
+                {
+                    Console.WriteLine("Connection is not Successfull. Retrying...");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            Console.WriteLine("Connected");
+
+
+
+            connected = true;
+
+            Task.Delay(1000).Wait();
+
+            SetElm327Configs();
+
+            Task.Delay(1000).Wait();
+
+            Task.Run(() =>
+            {
+                string data = "";
+                int k = 0;
+
+                while (!forceStop)
+                {
+                    // Buffer to store the response bytes.
+                    try
+                    {
+                        byte[] buffer = new byte[ReceiveBufferSize];
+
+                        int bytesRead = stream.Read(buffer, 0, buffer.Length);
+
+                        byte[] mesajj = new byte[bytesRead];
+
+                        for (int i = 0; i < bytesRead; i++)
+                        {
+                            mesajj[i] = buffer[i];
+                        }
+
+                        k++;
+                        data += Encoding.Default.GetString(mesajj, 0, bytesRead).Replace("\r", " ");
+
+                        if (data.EndsWith('>') || data.Length > 128 || k > 10)
+                        {
+
+                            k = 0;
+                            if (data.Length > 128)
+                            {
+                                send("\r");
+                            }
+
+                            PidMessageArrived.Invoke(data);
+
+                            data = "";
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                        //Console.WriteLine(e.Message);
+                        //Console.WriteLine("Connection Lost! Trying Connect Again");
+                        //forceStop= true;
+                        //StartOBDdev();
+                    }
+                }
+            });
+
+            OBDdeviceReady.Invoke();
+
+            
+
+
+        }
+
         void CheckObdConnection()
         {
             
