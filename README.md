@@ -21,21 +21,17 @@ At this point in time, The .NET Core are widely adoped by a large community of e
 
 ## Application Setup
 
-Navigate to the 'dotnetsamples' folder and execute the provision_thing.ps1 PowerShell script.  This script handles the setup for the .NET Framework examples in this repository including:
+Application setup is quite simple. You need to connect WiFi AP that is automatically created by ELM 327 device. You can ping to ELM 327 tool's IP (usually 192.168.0.10) for checking the connection after you connected to device. 
 
-- Downloading the Amazon Root CA certificate.
-- Generating a new certificate in AWS IoT.
-- Converting the private key to .PFX format.
-- Registering an AWS IoT thing with the created certificate.
-- Configuring the sample code to use your account's AWS IoT custom endpoint URL.
+<p>
+    <img src="/Images/ELM327_NET6_SETUP.png" alt>
+    <em>Application Setup Diagram</em>
+</p>
 
-You can skip to section 3c if you chose to execute the script.
 
 ## Manually Creating an AWS IoT Thing
 
 Alternatively, you can manually create an IoT thing using the AWS IoT console.  To start, let's navigate to the console and create an IoT thing called 'dotnetdevice'.
-
-![](/Images/ELM326_NET6_SETUP.png)
 
 ![](/images/pic2.JPG)
 
