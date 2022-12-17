@@ -2,6 +2,11 @@
 
 The aim of this repository is to communicate with your vehicle using **Elm327 WiFi OBDII Tool** and **.NET Core**. The code published in this repository uses TCP protocol for communicating with **ELM 327 Wifi OBDII Tool**.
 
+<p>
+    <img src="/Images/ELM327_NET6_BASE.png" alt>
+    <em>Application Setup Diagram</em>
+</p>
+
 # 2. Why .NET/.NET Core for OBDII Interface
 
 At this point in time, The .NET Core are widely adoped by a large community of enterprise developers. It paves way for use programming language like C# for communicating with vehicle OBDII port. The enterprise developers can integrate this functionality into Console Application, Windows Application and Xamarin mobile applications etc.
