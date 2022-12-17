@@ -11,11 +11,9 @@ namespace ELM327_PID_DataCollector
 
         static void Main(string[] args)
         {
-            Console.WriteLine("*ELM 327 WiFi Data Collector 2022*");
-            Console.WriteLine("Developed By sukurcan61");
-            Console.WriteLine("***************************");
-
-
+            Console.WriteLine("\r\n  ___  _     __  __  ____ ___  ____  __      __ _  ___  _      _  _  ___  _____ \r\n | __|| |   |  \\/  ||__ /|_  )|__  | \\ \\    / /(_)| __|(_)    | \\| || __||_   _|\r\n | _| | |__ | |\\/| | |_ \\ / /   / /   \\ \\/\\/ / | || _| | |  _ | .` || _|   | |  \r\n |___||____||_|  |_||___//___| /_/     \\_/\\_/  |_||_|  |_| (_)|_|\\_||___|  |_|  \r\n                                                                                \r\n");
+            Console.WriteLine("Contact : sukurcan61@gmail.com");
+            Console.WriteLine();
             Console.Write("Enter OBD Device IP address (ex:192.168.0.10): ");
             var Ip = Console.ReadLine();
             Console.Write("Enter OBD Device port number (ex:35000): ");
