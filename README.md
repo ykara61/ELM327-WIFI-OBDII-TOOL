@@ -35,7 +35,7 @@ You can skip to section 3c if you chose to execute the script.
 
 Alternatively, you can manually create an IoT thing using the AWS IoT console.  To start, let's navigate to the console and create an IoT thing called 'dotnetdevice'.
 
-![](/images/pic1.JPG)
+![](/Images/ELM326_NET6_SETUP.png)
 
 ![](/images/pic2.JPG)
 
