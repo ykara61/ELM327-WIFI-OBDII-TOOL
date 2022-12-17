@@ -39,7 +39,7 @@ Alternatively, you can manually create an IoT thing using the AWS IoT console.  
 
 <p>
     <img src="/Images/ELM327_NET6_CONSOLE_MAIN.png" alt>
-    <em>Application Main Console</em>
+    <em>Application Setup Diagram</em>
 </p>
 
 
