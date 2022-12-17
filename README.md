@@ -44,19 +44,7 @@ Let's associate the following policy with the thing.
 
 ``` json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "iot:Publish",
-        "iot:Subscribe",
-        "iot:Connect",
-        "iot:Receive"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "*"
-      ]
+kodlar falan
     }
   ]
 }
@@ -173,55 +161,9 @@ private static ManualResetEvent manualResetEvent;
 
 static void Main(string[] args)
 {
-    string iotEndpoint = "<<your-iot-endpoint>>";
-    int brokerPort = 8883;
-
-    Console.WriteLine("AWS IoT dotnet message consumer starting..");
-
-    var caCert = X509Certificate.CreateFromCertFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AmazonRootCA1.crt"));
-    var clientCert = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "certificate.cert.pfx"), "MyPassword1");
-    
-    var client = new MqttClient(iotEndpoint, brokerPort, true, caCert, clientCert, MqttSslProtocols.TLSv1_2);
-    client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
-    client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
-
-    string clientId = Guid.NewGuid().ToString();
-    client.Connect(clientId);
-    Console.WriteLine($"Connected to AWS IoT with client ID: {clientId}");
-
-    string topic = "Hello/World";
-    client.Subscribe(new string[] { topic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
-
-    // Keep the main thread alive for the event receivers to get invoked
-    KeepConsoleAppRunning(() => {
-        client.Disconnect();
-        Console.WriteLine("Disconnecting client..");
+kodlar falan
     });
 }
-
-private static void Client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
-{
-    Console.WriteLine($"Successfully subscribed to the AWS IoT topic.");
-}
-
-private static void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-{
-    Console.WriteLine("Message received: " + Encoding.UTF8.GetString(e.Message));
-}
-
-private static void KeepConsoleAppRunning(Action onShutdown)
-{
-    manualResetEvent = new ManualResetEvent(false);
-    Console.WriteLine("Press CTRL + C or CTRL + Break to exit...");
-
-    Console.CancelKeyPress += (sender, e) =>
-    {
-        onShutdown();
-        e.Cancel = true;
-        manualResetEvent.Set();
-    };
-
-    manualResetEvent.WaitOne();
 }
 ``` 
 The complete visual studio solution for this publisher is available under the 'Dotnetsamples' folder in this repository.
@@ -254,19 +196,14 @@ Let's create the .NET Core console application for the producer by issuing the f
 
 ``` shell
 mkdir Iotdotnetcorepublisher
-cd Iotdotnetcorepublisher
-dotnet new console
-dotnet add package M2MqttClientDotnetCore --version 1.0.1
+kodlar falan
 dotnet restore
 ```
 Open Program.cs in Visual Studio and import the following namespaces.
 
 ``` c#
 using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
+kodlar falan
 using M2Mqtt;
 ``` 
 
@@ -278,28 +215,7 @@ Once the connection is successful publish to AWS IoT by specifying the topic and
 
 ``` c#
 string iotEndpoint = "<<your-iot-endpoint>>";
-Console.WriteLine("AWS IoT Dotnet core message publisher starting");
-int brokerPort = 8883;
-
-string message = "Test message";
-string topic = "Hello/World";
-
-var caCert = X509Certificate.CreateFromCertFile(Path.Join(AppContext.BaseDirectory, "AmazonRootCA1.crt"));
-var clientCert = new X509Certificate2(Path.Join(AppContext.BaseDirectory, "certificate.cert.pfx"), "MyPassword1");
-
-var client = new MqttClient(iotEndpoint, brokerPort, true, caCert, clientCert, MqttSslProtocols.TLSv1_2);
-
-string clientId = Guid.NewGuid().ToString();
-client.Connect(clientId);
-Console.WriteLine($"Connected to AWS IoT with client id: {clientId}.");
-
-int i = 0;
-while (true)
-{
-    client.Publish(topic, Encoding.UTF8.GetBytes($"{message} {i}"));
-    Console.WriteLine($"Published: {message} {i}");
-    i++;
-    Thread.Sleep(5000);
+kodlar falan
 }
 ``` 
 
@@ -313,21 +229,14 @@ Let's create the .NET Core console application for the consumer by issuing the f
 
 ``` shell
 mkdir Iotdotnetcoreconsumer
-cd Iotdotnetcoreconsumer
-dotnet new console
-dotnet add package M2MqttClientDotnetCore --version 1.0.1
-dotnet restore
+kodlar falan
 
 ```
 Open the Program.cs in Visual Studio and import the following namespaces.
 
 ``` c#
 using System;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading;
-using M2Mqtt;
+kodlar falan
 using M2Mqtt.Messages;
 ``` 
 
@@ -340,58 +249,7 @@ You can subscribe to the AWS IoT messages by specifying the Topic as string arra
 ``` c#
 private static ManualResetEvent manualResetEvent;
 
-static void Main(string[] args)
-{
-    string iotEndpoint = "<<your-iot-endpoint>>";
-    int brokerPort = 8883;
-    
-    Console.WriteLine("AWS IoT dotnetcore message consumer starting..");
-    var caCert = X509Certificate.CreateFromCertFile(Path.Join(AppContext.BaseDirectory, "AmazonRootCA1.crt"));
-    var clientCert = new X509Certificate2(Path.Join(AppContext.BaseDirectory, "certificate.cert.pfx"), "MyPassword1");
-
-    var client = new MqttClient(iotEndpoint, brokerPort, true, caCert, clientCert, MqttSslProtocols.TLSv1_2);
-
-    client.MqttMsgSubscribed += IotClient_MqttMsgSubscribed;
-    client.MqttMsgPublishReceived += IotClient_MqttMsgPublishReceived;
-
-    string clientId = Guid.NewGuid().ToString();
-    client.Connect(clientId);
-    Console.WriteLine($"Connected to AWS IoT with client ID: {clientId}");
-
-    string topic = "Hello/World";
-    Console.WriteLine($"Subscribing to topic: {topic}");
-    client.Subscribe(new string[] { topic }, new byte[] {MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
-
-    // Keep the main thread alive for the event receivers to get invoked
-    KeepConsoleAppRunning(() => {
-        client.Disconnect();
-        Console.WriteLine("Disconnecting client..");
-    });
-}
-
-private static void IotClient_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-{
-    Console.WriteLine("Message received: " + Encoding.UTF8.GetString(e.Message));
-}
-
-private static void IotClient_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
-{
-    Console.WriteLine($"Successfully subscribed to the AWS IoT topic.");
-}
-
-private static void KeepConsoleAppRunning(Action onShutdown)
-{
-    manualResetEvent = new ManualResetEvent(false);
-    Console.WriteLine("Press CTRL + C or CTRL + Break to exit...");
-
-    Console.CancelKeyPress += (sender, e) =>
-    {
-        onShutdown();
-        e.Cancel = true;
-        manualResetEvent.Set();
-    };
-
-    manualResetEvent.WaitOne();
+kodlar falan
 }
 ``` 
 
