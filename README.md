@@ -33,13 +33,12 @@ Application setup is quite simple. You need to connect WiFi AP that is automatic
 </p>
 
 
-## Manually Creating an AWS IoT Thing
+## Running The APP
 
 Alternatively, you can manually create an IoT thing using the AWS IoT console.  To start, let's navigate to the console and create an IoT thing called 'dotnetdevice'.
 
 <p>
     <img src="/Images/ELM327_NET6_CONSOLE_MAIN.png" alt>
-    <em>Application Setup Diagram</em>
 </p>
 
 
