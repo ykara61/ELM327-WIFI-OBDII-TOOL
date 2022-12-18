@@ -138,6 +138,7 @@ namespace ELM327_PID_DataCollector
                 case Mode.PIDdetector:
                     Task.Run(() =>
                     {
+                        Console.WriteLine("OBDII port is being analyzed... Please Wait...");
                         var modes = new string[] { "01", "02", "03", "09" };
                         for (int i = 1; i < 256; i++)
                         {
@@ -152,9 +153,23 @@ namespace ELM327_PID_DataCollector
                         Console.WriteLine("********************************");
                         foreach (var i in PIDlist)
                         {
-                            Console.WriteLine(pidValues.Where(x=>x.PIDhex == i.Substring(2,2)).LastOrDefault().Name);
+                            if (!i.Contains("41")) continue;
+                            var ValExceptSpaces = i.Replace(" ","");
+                            var pidValHex = ValExceptSpaces.Substring(2, 2);
+                            var pidVal = pidValues.Where(x => x.PIDhex == pidValHex).LastOrDefault();
+                            if (pidVal != null)
+                            {
+                                Console.WriteLine("PID Name: " + pidVal.Name +" ----- "+" PID Unit: " + pidVal.Unit);
+                                Console.WriteLine("//////////////");
+                            }
+                            else
+                            {
+                                Console.WriteLine("value is null");
+                            }
                         }
                         Console.WriteLine("********************************");
+                        PIDlist.Clear();
+                        totalAvailablePIDcount = 0;
                     });
 
                     break;
@@ -166,6 +181,8 @@ namespace ELM327_PID_DataCollector
                             client.SendSpeedRequest();
                             dataReceivedEvent.WaitOne(2000);
                             client.SendRpmRequest();
+                            dataReceivedEvent.WaitOne(2000);
+                            client.SendFuelLevelRequest();
                             dataReceivedEvent.WaitOne(2000);
                         }
 
@@ -203,8 +220,6 @@ namespace ELM327_PID_DataCollector
                     if (!message.Contains("NO DATA"))
                     {
                         totalAvailablePIDcount++;
-                        Console.WriteLine("Totally " + totalAvailablePIDcount + " PID value found!");
-                        Console.WriteLine("Analyzing...");
                         PIDlist.Add(message);
                     }
                     arEvent.Set();
@@ -214,13 +229,20 @@ namespace ELM327_PID_DataCollector
                     {
                         var xx = message.Split("41 0D ")[1];
                         var spd = (message.Split("41 0D ")[1].Replace(" ", "").Substring(0, 2));
-                        Console.WriteLine("SPEED : " + Convert.ToInt32(HelperTool.hex2bin(spd), 2));
+                        Console.WriteLine("SPEED : " + (Convert.ToInt32(HelperTool.hex2bin(spd), 2)) + " km/h");
                     }
                     else if (message.Contains("41 0C"))
                     {
                         var xx = message.Split("41 0C ")[1];
                         var rpm = (message.Split("41 0C ")[1].Replace(" ", "").Substring(0, 4));
-                        Console.WriteLine("RPM : " + Convert.ToInt32(HelperTool.hex2bin(rpm), 2) / 4);
+                        Console.WriteLine("RPM : " + (Convert.ToInt32(HelperTool.hex2bin(rpm), 2) / 4) + " rpm");
+                    }
+                    else if (message.Contains("41 2F"))
+                    {
+                        var xx = message.Split("41 2F ")[1];
+                        var fuelLevel = (message.Split("41 2F ")[1].Replace(" ", "").Substring(0, 2));
+                        var val = (Convert.ToInt32(HelperTool.hex2bin(fuelLevel), 2) / 2.55);
+                        Console.WriteLine("Fuel Level : % " + Math.Round(val, 2));
                     }
                     dataReceivedEvent.Set();
                     break;

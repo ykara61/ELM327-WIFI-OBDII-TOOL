@@ -256,6 +256,11 @@ namespace ELM327_PID_DataCollector
             send("010C" + "\r");
         }
 
+        public void SendFuelLevelRequest()
+        {
+            send("012F" + "\r");
+        }
+
         public void SendRequest(string id,string mode)
         {
             send(mode+id + "\r");
