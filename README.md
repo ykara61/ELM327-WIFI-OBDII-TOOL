@@ -48,7 +48,7 @@ These options are:
 
 <p>
     <img src="/Images/ELM327_ALL_MODES.png" alt>
-    <em>Application Setup Diagram</em>
+    <em>Options Screenshots</em>
 </p>
 
 The complete .NET project source for the publisher is available under the Dotnetcoresamples folder in this repository.
