@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELM327_PID_DataCollector.Properties {
+namespace ELM327_WIFI_OBDII_TOOL.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ELM327_PID_DataCollector.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ELM327_PID_DataCollector.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ELM327_WIFI_OBDII_TOOL.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
