@@ -46,6 +46,10 @@ These options are:
 - **Get Current Vehicle Data** - This option writes some significant real time vehicle data that contains *Engine rpm, Vehicle Speed* and *Fuel level*. These values will be printed until user terminates the console application.
 - **Free Mode (Pre-Configured)** -  This option gives to availability to send any data you want to send to the Elm 327. All possible commands that is available in the web [Link](https://www.sparkfun.com/datasheets/Widgets/ELM327_AT_Commands.pdf)
 
+<p>
+    <img src="/Images/ELM327_ALL_MODES.png" alt>
+    <em>Application Setup Diagram</em>
+</p>
 
 The complete .NET project source for the publisher is available under the Dotnetcoresamples folder in this repository.
 
