@@ -53,5 +53,3 @@ These options are:
 
 The complete .NET project source for the publisher is available in this repository.
 
-Run the application using 'dotnet run' and you should see messages consumed by the dotnetcore
-
